@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+*, button, input, select {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  min-height: 100%;
+}
+
+body {
+  background: #1b1b1b url('./assets/background.jpg') no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+.App {
+  background-color: rgb(33, 33, 33, 0.8);
+  min-height: 100vh;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+
+.AppHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  max-width: 95%;
+  padding-top: 10px;
+  margin: auto;
+}
+
+.AppHeader > .logo >  img {
+  height: 60px;
+  margin: 0;
+}
+
+.papa:hover {
+  background-image: url('./assets/spotify.svg');
+}
+
+.AppHeader > .logo > span {
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+  transform: translateX(-10px);
+}
+
+.AppHeader .user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AppHeader > .user > .userImg {
+  height: 60px;
+  width: 60px;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+.AppHeader > .user > .userName {
+  color: white;
+  font-size: 1em;
+  /* transform: translateX(10px); */
+}

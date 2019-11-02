@@ -1,0 +1,37 @@
+.BuscadorContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    /* width: 70%; */
+    width: 600px;
+    max-width: 100%;
+    margin: 60px auto;
+}
+
+.Buscador {
+    border: none;
+    padding: 0 10px;
+    height: 50px;
+    font-size: 1.25em;
+    width: 100%;
+    border-radius: 6px;
+    margin: 3px;
+}
+
+.BuscadorContainer > button {
+    border: none;
+    background-color: #00d95f;
+    height: 51px;
+    width: 60px;
+    margin: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.BuscadorContainer > button > img {
+    height: 40px;
+}
