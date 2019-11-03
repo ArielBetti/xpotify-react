@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './style.css';
-import logo from '../../assets/spotify-white.svg'
-import search from '../../assets/search-white.svg'
+import api from '../../services/api';
+import logo from '../../assets/spotify-white.svg';
+import search from '../../assets/search-white.svg';
 
-class Home extends React.Component {
+export default function Home() {
 
-    componentDidMount() {
-
-        // var aScript = document.createElement('script');
-        // aScript.type = 'text/javascript';
-        // aScript.src = "../public/js/getToken.js";
+    function TokenRemain() {
 
         function getHashParams() {
             let hashParams = {};
@@ -38,33 +35,60 @@ class Home extends React.Component {
 
             localStorage.access_token = access_token;
         }
-        console.log('Teste');
     }
 
-    render() {
-        return (
-            <div className="AppHome">
-                <header className="AppHeader">
-                    <div className="logo">
-                        <img src={logo} alt="" />
-                        <span>Xpotify</span>
-                    </div>
-                    <div className="user">
-                        <span className="userName">arielbetti99</span>
-                        <img className="userImg" src="https://profile-images.scdn.co/images/userprofile/default/75591f2089ba602643cf180e38f516ebb337474a" alt="" />
-                    </div>
-                </header>
-                <main className="HomeMain">
-                    <form className="BuscadorContainer">
-                        <input type="text" className="Buscador" placeholder="Busque por artistas ou músicas" />
-                        <button><img src={search} alt="" /></button>
-                    </form>
-                </main>
-            </div>
-        );
+    /* Permanece o Token no LocaStorage */
+    TokenRemain()
+
+    const token = 'access_token='+ localStorage.access_token;
+    const InUserDetails = JSON.parse(localStorage.userDetails);
+
+    async function getUser() {
+        await api.get('/me?' + token)
+            .then(function (response) {
+                // handle success
+                console.log(response);
+                const userDetails = {
+                    userName: response.data.display_name,
+                    userImg: response.data.images[0]
+                }
+
+                localStorage.userDetails = JSON.stringify(userDetails);
+
+                return userDetails;
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
     }
 
+    getUser();
+
+    return (
+        <div className="AppHome">
+            <header className="AppHeader">
+                <div className="logo">
+                    <img src={logo} alt="" />
+                    <span>Xpotify</span>
+                </div>
+                <div className="user">
+                    <span className="userName">{InUserDetails.userName}</span>
+                    <img className="userImg" src={InUserDetails.userImg.url} alt="" />
+                </div>
+            </header>
+            <main className="HomeMain">
+                <form className="BuscadorContainer">
+                    <input type="text"
+                        className="Buscador"
+                        placeholder="Busque por artistas ou músicas"
+                    />
+                    <button><img src={search} alt="" /></button>
+                </form>
+            </main>
+        </div>
+    );
 }
-
-
-export default Home
