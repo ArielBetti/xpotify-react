@@ -73,3 +73,12 @@ body {
   font-size: 1em;
   /* transform: translateX(10px); */
 }
+
+.player {
+  display: none;
+  height: 13vh;
+  width: 100%;
+  background-color: rgba(33,33,33, 0.9);
+  position: absolute;
+  bottom: 0;
+}
