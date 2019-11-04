@@ -6,8 +6,32 @@ import search from '../../assets/search-white.svg';
 
 export default function Home() {
 
-        let username = localStorage.userName;
-        let userimg = localStorage.userImg;
+    const [inputSearch, SetinputSearch] = useState('');
+    const [results, setResults] = useState([]);
+
+    function preventsubmit(event) {
+        event.preventDefault();
+    }
+
+    async function getSearch(value) {
+        const token = 'access_token=' + localStorage.access_token
+
+        SetinputSearch(value);
+        await api.get('/search?q=' + inputSearch + '&type=track%2Cartist%2Calbum%2Cplaylist&type=track&artist&album&playlist&market=US&limit=10&offset=1&' + token)
+            .then(function (response) {
+                // handle success
+                console.log(response);
+                console.log(response.data.tracks.items[0].artists[0].name);
+                setResults(response.data.artists.items)
+                console.log(response.data.artists.items[0].images[0].url);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+    let username = localStorage.userName;
+    let userimg = localStorage.userImg;
 
     return (
         <div className="AppHome">
@@ -22,14 +46,77 @@ export default function Home() {
                 </div>
             </header>
             <main className="HomeMain">
-                <form className="BuscadorContainer">
+                <form
+                    onSubmit={preventsubmit}
+                    className="BuscadorContainer">
                     <input type="text"
                         className="Buscador"
                         placeholder="Busque por artistas ou músicas"
+                        onKeyUp={event => getSearch(event.target.value)}
                     />
                     <button><img src={search} alt="" /></button>
                 </form>
+                <div className="realtimeinput">
+                    <h2>{inputSearch}</h2>
+                </div>
             </main>
+            <section className="Itens">
+                <div className="item">
+                    {results.length > 0 ? (
+                        <div>
+                            <h3 className="TypeTitle">Artistas</h3>
+                            <div id="style-15" className="ContainerSearch">
+                            <div className="sectionType">
+                            </div>
+                            {
+                                results.map(
+                                    result => (
+                                        <div
+                                            className="Artista"
+                                            key={result.id}>
+                                            {result.images[0] ? (
+
+                                                <div
+                                                    className="teste">
+                                                    <img
+                                                        className="searchpick"
+                                                        src={result.images[0].url}
+                                                        alt="Foto do artista" />
+                                                </div>
+                                            ) : (
+                                                    <div
+                                                        className="teste">
+                                                        <img
+                                                            className="searchpick"
+                                                            src={logo}
+                                                            alt="Foto do artista" />
+                                                    </div>
+                                                )
+                                            }
+                                            <div className="searchname">
+                                                {result.name}
+                                            </div>
+                                            <div className="searchtype">
+                                                {result.type}
+                                            </div>
+
+                                        </div>
+                                    )
+                                )
+                            }
+                        </div>
+                            </div>
+
+               
+                    ) : (
+                            <div></div>
+                        )
+                    }
+                </div>
+            </section>
+            <section className="player">
+
+            </section>
         </div>
     );
 }

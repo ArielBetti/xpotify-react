@@ -6,7 +6,7 @@
     /* width: 70%; */
     width: 600px;
     max-width: 100%;
-    margin: 60px auto;
+    margin: 15px auto 40px;
 }
 
 .Buscador {
@@ -17,6 +17,7 @@
     width: 100%;
     border-radius: 6px;
     margin: 3px;
+    color: #616161;
 }
 
 .BuscadorContainer > button {
@@ -30,8 +31,131 @@
     align-items: center;
     border-radius: 6px;
     cursor: pointer;
+    transition: 500ms;
 }
 
 .BuscadorContainer > button > img {
     height: 40px;
+}
+
+.BuscadorContainer > button:hover {
+  background-color: #12b157;  
+}
+
+.realtimeinput {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 600px;
+    max-width: 100%;
+    margin: auto;
+}
+
+.realtimeinput > h2 {
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 0px;
+    padding-left: 5px;
+    transform: translateY(-25px);
+}
+
+.Artista {
+    background-color: rgb(33, 33, 33, 0.8);
+    margin: 4px;
+    border-radius: 4px;
+    width: 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 0px;
+    transition: 500ms;
+    height: 150px;
+    overflow: hidden;
+}
+
+.Artista:hover {
+    transform: translateY(-2px);
+    cursor: pointer;
+    box-shadow: 0px 0px 5px rgb(0, 217, 95, 1);
+}
+
+.searchpick {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+}
+
+.searchname {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px;
+    color: white;
+    overflow: hidden;
+}
+
+.searchtype {
+    color: white;
+    font-weight: lighter;
+    font-size: 10px;
+    transform: translateY(10px);
+}
+
+.Itens {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.ContainerSearch {
+    margin: auto;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 52vh;
+    overflow: auto;
+}
+
+#style-15::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	background-color: rgb(33, 33, 33, 0.3);
+	border-radius: 10px;
+}
+
+
+-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	background-color: rgb(33, 33, 33, 0.3);
+	border-radius: 10px;
+}
+
+#style-15::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: transparent;
+}
+
+#style-15::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: transparent;
+	background-image: -webkit-gradient(linear,
+									   40% 0%,
+									   75% 84%,
+									   from(#00d95f),
+									   to(#00d95f),
+									   color-stop(.6,#00d95f))
+}
+
+.TypeTitle {
+    color: white;
+    font-size: 20px;
+    transform: translateY(-5px);
 }

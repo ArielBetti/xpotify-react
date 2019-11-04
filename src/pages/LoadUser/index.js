@@ -2,8 +2,9 @@ import React from 'react';
 import api from '../../services/api';
 import Routes from '../../routes';
 import './style.css'
-export default function LoadUser( {history} ) {
-    
+
+export default function LoadUser({ history }) {
+
     function TokenRemain() {
 
         function getHashParams() {
@@ -26,49 +27,47 @@ export default function LoadUser( {history} ) {
             localStorage.access_token = access_token;
         }
 
-        if (!localStorage.access_token) {
-            let access_token = params.access_token,
-                refresh_token = params.refresh_token,
-                error = params.error;
+        let access_token = params.access_token,
+            refresh_token = params.refresh_token,
+            error = params.error;
 
-            localStorage.access_token = access_token;
-        }
-
-        const token = 'access_token=' + localStorage.access_token;
-    
-        function getUser() {
-            api.get('/me?' + token)
-                .then(function (response) {
-                    // handle success
-                    console.log(response);
-                    const userDetails = {
-                        userName: response.data.display_name,
-                        userImg: response.data.images[0].url
-                    }
-    
-                        localStorage.userName = userDetails.userName
-                        localStorage.userImg = userDetails.userImg
-                        
-    
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-                .finally(function () {
-                    // always executed
-                });
-        }
-        getUser();
-        setTimeout(function teste() {
-            history.push('Home');
-        }, 1300);
-    
+        localStorage.access_token = access_token;
     }
 
     /* Persiste o token na aplicação */
     TokenRemain();
 
+    const token = 'access_token=' + localStorage.access_token;
+
+    function getUser() {
+        api.get('/me?' + token)
+            .then(function (response) {
+                // handle success
+                console.log(response);
+                const userDetails = {
+                    userName: response.data.display_name,
+                    userImg: response.data.images[0].url
+                }
+
+                localStorage.userName = userDetails.userName
+                localStorage.userImg = userDetails.userImg
+
+
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
+    }
+    getUser();
+
+    /*Faz Animação especial de loading*/
+    setTimeout(function teste() {
+        history.push('Home');
+    }, 1300);
 
     return (
         <div>
