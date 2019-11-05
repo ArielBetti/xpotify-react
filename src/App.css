@@ -105,11 +105,11 @@ body {
   cursor: default;
 }
 
-.player {
-  display: none;
-  height: 13vh;
+.Player {
+  display: flex;
+  height: 8vh;
   width: 100%;
-  background-color: rgba(33,33,33, 0.9);
+  background-color: rgb(19, 19, 19);
   position: absolute;
   bottom: 0;
 }

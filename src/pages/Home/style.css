@@ -2,12 +2,12 @@
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
 	background-color: rgb(33, 33, 33, 0.3);
-	border-radius: 10px;
+    border-radius: 10px;
 }
 
 .ItensSearch::-webkit-scrollbar
 {
-	width: 5px;
+    width: 3px;
 	background-color: transparent;
 }
 
@@ -86,7 +86,7 @@
 }
 
 .Artista {
-    background-color: rgb(33, 33, 33, 0.8);
+    background-color: rgb(33, 33, 33, 0.9);
     margin: 4px;
     border-radius: 4px;
     width: 100px;
@@ -128,6 +128,8 @@
     font-size: 10px;
     transform: translateY(10px);
     transition: 500ms;
+    max-width: 100px;
+    margin: auto;
 }
 
 .searchname:hover {
@@ -149,7 +151,7 @@
 .ItensSearch {
     max-width: 95%;
     margin: auto;
-    height: 50vh;
+    height: 66vh;
     overflow: auto;
 }
 
@@ -171,4 +173,8 @@
     align-items: center;
     color: white;
     font-size: 15px;
+}
+
+.testeAi {
+    padding: 35px;    
 }
