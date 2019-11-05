@@ -1,3 +1,28 @@
+.ItensSearch::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	background-color: rgb(33, 33, 33, 0.3);
+	border-radius: 10px;
+}
+
+.ItensSearch::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: transparent;
+}
+
+.ItensSearch::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: transparent;
+	background-image: -webkit-gradient(linear,
+									   40% 0%,
+									   75% 84%,
+									   from(#00d95f),
+									   to(#00d95f),
+									   color-stop(.6,#00d95f))
+}
+
 .BuscadorContainer {
     display: flex;
     justify-content: center;
@@ -22,7 +47,7 @@
 
 .BuscadorContainer > button {
     border: none;
-    background-color: #00d95f;
+    background-color: rgb(0, 219, 95);
     height: 51px;
     width: 60px;
     margin: 3px;
@@ -79,6 +104,7 @@
     transform: translateY(-2px);
     cursor: pointer;
     box-shadow: 0px 0px 5px rgb(0, 217, 95, 1);
+    color: #00d95f;
 }
 
 .searchpick {
@@ -93,6 +119,7 @@
     padding: 5px;
     color: white;
     overflow: hidden;
+    transition: 500ms;
 }
 
 .searchtype {
@@ -100,62 +127,48 @@
     font-weight: lighter;
     font-size: 10px;
     transform: translateY(10px);
+    transition: 500ms;
+}
+
+.searchname:hover {
+    color: #00d95f;
+}
+
+.searchtype:hover {
+    color: #00d95f;
 }
 
 .Itens {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     
+}
+
+.ItensSearch {
+    max-width: 95%;
+    margin: auto;
+    height: 50vh;
+    overflow: auto;
 }
 
 .ContainerSearch {
     margin: auto;
-    width: 100%;
     max-width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 52vh;
+    margin-top: 20px;
+    margin-bottom: 20px;
     overflow: auto;
 }
 
-#style-15::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-	background-color: rgb(33, 33, 33, 0.3);
-	border-radius: 10px;
-}
-
-
--webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-	background-color: rgb(33, 33, 33, 0.3);
-	border-radius: 10px;
-}
-
-#style-15::-webkit-scrollbar
-{
-	width: 5px;
-	background-color: transparent;
-}
-
-#style-15::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	background-color: transparent;
-	background-image: -webkit-gradient(linear,
-									   40% 0%,
-									   75% 84%,
-									   from(#00d95f),
-									   to(#00d95f),
-									   color-stop(.6,#00d95f))
-}
-
 .TypeTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
-    font-size: 20px;
-    transform: translateY(-5px);
+    font-size: 15px;
 }

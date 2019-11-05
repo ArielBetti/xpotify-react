@@ -7,7 +7,10 @@ import search from '../../assets/search-white.svg';
 export default function Home() {
 
     const [inputSearch, SetinputSearch] = useState('');
-    const [results, setResults] = useState([]);
+    const [artists, setArtists] = useState([]);
+    const [albums, setAlbums] = useState([]);
+    const [tracks, setTracks] = useState([]);
+    const [playlists, setPlaylists] = useState([]);
 
     function preventsubmit(event) {
         event.preventDefault();
@@ -20,10 +23,12 @@ export default function Home() {
         await api.get('/search?q=' + inputSearch + '&type=track%2Cartist%2Calbum%2Cplaylist&type=track&artist&album&playlist&market=US&limit=10&offset=1&' + token)
             .then(function (response) {
                 // handle success
-                console.log(response);
-                console.log(response.data.tracks.items[0].artists[0].name);
-                setResults(response.data.artists.items)
-                console.log(response.data.artists.items[0].images[0].url);
+                setArtists(response.data.artists);
+                setAlbums(response.data.albums);
+                setTracks(response.data.tracks);
+                setPlaylists(response.data.playlists);
+
+                console.log('response.data', response.data)
             })
             .catch(function (error) {
                 console.log(error);
@@ -60,54 +65,154 @@ export default function Home() {
                     <h2>{inputSearch}</h2>
                 </div>
             </main>
-            <section className="Itens">
-                <div className="item">
-                    {results.length > 0 ? (
+            <section className="ItensSearch">
+                <div id="style-15" className="itemSearch">
+                    {tracks.items && tracks.items.length > 0 ? (
                         <div>
-                            <h3 className="TypeTitle">Artistas</h3>
-                            <div id="style-15" className="ContainerSearch">
-                            <div className="sectionType">
-                            </div>
-                            {
-                                results.map(
-                                    result => (
-                                        <div
-                                            className="Artista"
-                                            key={result.id}>
-                                            {result.images[0] ? (
+                            <h3 className="TypeTitle">Músicas</h3>
+                            <div className="ContainerSearch">
+                                <div className="sectionType">
+                                </div>
+                                {
+                                    tracks.items.map(
+                                        track => (
+                                            <div
+                                                className="Artista"
+                                                key={track.id}>
+                                                {track.album.images[0] ? (
 
-                                                <div
-                                                    className="teste">
-                                                    <img
-                                                        className="searchpick"
-                                                        src={result.images[0].url}
-                                                        alt="Foto do artista" />
-                                                </div>
-                                            ) : (
                                                     <div
                                                         className="teste">
                                                         <img
                                                             className="searchpick"
-                                                            src={logo}
+                                                            src={track.album.images[0].url}
                                                             alt="Foto do artista" />
                                                     </div>
-                                                )
-                                            }
-                                            <div className="searchname">
-                                                {result.name}
-                                            </div>
-                                            <div className="searchtype">
-                                                {result.type}
-                                            </div>
+                                                ) : (
+                                                        <div
+                                                            className="teste">
+                                                            <img
+                                                                className="searchpick"
+                                                                src={logo}
+                                                                alt="Foto do artista" />
+                                                        </div>
+                                                    )
+                                                }
+                                                <div className="searchname">
+                                                    {track.name}
+                                                </div>
+                                                <div className="searchtype">
+                                                    {track.artists[0].name}
+                                                </div>
 
-                                        </div>
+                                            </div>
+                                        )
                                     )
-                                )
-                            }
-                        </div>
+                                }
                             </div>
+                        </div>
 
-               
+
+                    ) : (
+                            <div></div>
+                        )
+                    }
+                </div>
+                <div id="style-15" className="itemSearch">
+                    {artists.items && artists.items.length > 0 ? (
+                        <div className='testemad'>
+                            <h3 className="TypeTitle">Artistas</h3>
+                            <div id="style-15" className="ContainerSearch">
+                                <div className="sectionType">
+                                </div>
+                                {
+                                    artists.items.map(
+                                        artist => (
+                                            <div
+                                                className="Artista"
+                                                key={artist.id}>
+                                                {artist.images[0] ? (
+
+                                                    <div
+                                                        className="teste">
+                                                        <img
+                                                            className="searchpick"
+                                                            src={artist.images[0].url}
+                                                            alt="Foto do artista" />
+                                                    </div>
+                                                ) : (
+                                                        <div
+                                                            className="teste">
+                                                            <img
+                                                                className="searchpick"
+                                                                src={logo}
+                                                                alt="Foto do artista" />
+                                                        </div>
+                                                    )
+                                                }
+                                                <div className="searchname">
+                                                    {artist.name}
+                                                </div>
+                                                <div className="searchtype">
+                                                    {artist.type}
+                                                </div>
+
+                                            </div>
+                                        )
+                                    )
+                                }
+                            </div>
+                        </div>
+                    ) : (
+                            <div></div>
+                        )
+                    }
+                </div>
+                <div id="style-15" className="itemSearch">
+                    {albums.items && albums.items.length > 0 ? (
+                        <div>
+                            <h3 className="TypeTitle">Albums</h3>
+                            <div className="ContainerSearch">
+                                <div className="sectionType">
+                                </div>
+                                {
+                                    albums.items.map(
+                                        album => (
+                                            <div
+                                                className="Artista"
+                                                key={album.id}>
+                                                {album.images[0] ? (
+
+                                                    <div
+                                                        className="teste">
+                                                        <img
+                                                            className="searchpick"
+                                                            src={album.images[0].url}
+                                                            alt="Foto do artista" />
+                                                    </div>
+                                                ) : (
+                                                        <div
+                                                            className="teste">
+                                                            <img
+                                                                className="searchpick"
+                                                                src={logo}
+                                                                alt="Foto do artista" />
+                                                        </div>
+                                                    )
+                                                }
+                                                <div className="searchname">
+                                                    {album.name}
+                                                </div>
+                                                <div className="searchtype">
+                                                    {album.type}
+                                                </div>
+
+                                            </div>
+                                        )
+                                    )
+                                }
+                            </div>
+                        </div>
                     ) : (
                             <div></div>
                         )
