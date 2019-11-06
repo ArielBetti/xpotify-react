@@ -77,9 +77,9 @@
 }
 
 .realtimeinput > h2 {
-    color: white;
+    color: #00d95f;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 15px;
     margin: 0px;
     padding-left: 5px;
     transform: translateY(-25px);

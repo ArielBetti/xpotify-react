@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import Routes from '../../routes'
 import './style.css';
 import api from '../../services/api';
 import logo from '../../assets/spotify-white.svg';
 import search from '../../assets/search-white.svg';
 
-export default function Home() {
+export default function Home({ history }) {
 
     const [inputSearch, SetinputSearch] = useState('');
     const [artists, setArtists] = useState([]);
@@ -27,16 +28,31 @@ export default function Home() {
                 setAlbums(response.data.albums);
                 setTracks(response.data.tracks);
                 setPlaylists(response.data.playlists);
-
-                console.log('response.data', response.data)
+                console.log(tracks);
             })
             .catch(function (error) {
                 console.log(error);
             })
     }
 
+        
+    function diztrack(faixa) {
+        const sounds = document.getElementsByTagName('audio');
+        const Sond = document.getElementById(faixa);
+        if(Sond) {
+            if(Sond.paused) {
+                for(let i=0; i< sounds.length; i++){ sounds[i].pause()};
+                Sond.play()
+            }else{
+                Sond.pause()
+            }
+        }        
+    }
+
     let username = localStorage.userName;
     let userimg = localStorage.userImg;
+
+    
 
     return (
         <div className="AppHome">
@@ -68,6 +84,7 @@ export default function Home() {
             <section className="ItensSearch">
                 <div id="style-15" className="itemSearch">
                     {tracks.items && tracks.items.length > 0 ? (
+
                         <div>
                             <h3 className="TypeTitle">Músicas</h3>
                             <div className="ContainerSearch">
@@ -76,8 +93,19 @@ export default function Home() {
                                 {
                                     tracks.items.map(
                                         track => (
+                                            
                                             <div
+                                                
                                                 className="Artista"
+                                                onClick={event => document.getElementById(track.id).paused ? (
+                                                    
+                                                    document.getElementById(track.id).play()
+                                                ) : (
+                                                    document.getElementById(track.id).pause()
+                                                )
+                                                
+                                                }
+                                                // onChangeCapture={diztrack(track.id)}
                                                 key={track.id}>
                                                 {track.album.images[0] ? (
 
@@ -104,6 +132,7 @@ export default function Home() {
                                                 <div className="searchtype">
                                                     {track.artists[0].name}
                                                 </div>
+                                                <audio id={track.id} src={track.preview_url}></audio>
 
                                             </div>
                                         )
@@ -130,6 +159,7 @@ export default function Home() {
                                         artist => (
                                             <div
                                                 className="Artista"
+                                                onClick=''
                                                 key={artist.id}>
                                                 {artist.images[0] ? (
 
@@ -268,9 +298,6 @@ export default function Home() {
                         )
                     }
                 </div>
-            </section>
-            <section className="Player">
-
             </section>
         </div>
     );
