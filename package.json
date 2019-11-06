@@ -14,7 +14,7 @@
     "cors": "^2.8.5",
     "express": "~4.0.0",
     "querystring": "~0.2.0",
-    "request": "~2.34.0"
+    "request": "~2.47.0"
   },
   "scripts": {
     "start": "react-scripts start",
