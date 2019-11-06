@@ -35,24 +35,20 @@ export default function Home({ history }) {
             })
     }
 
-        
-    function diztrack(faixa) {
-        const sounds = document.getElementsByTagName('audio');
-        const Sond = document.getElementById(faixa);
-        if(Sond) {
-            if(Sond.paused) {
-                for(let i=0; i< sounds.length; i++){ sounds[i].pause()};
-                Sond.play()
-            }else{
-                Sond.pause()
-            }
-        }        
+    function genMusicas(eventTrack) {
+        let Atual = document.getElementById(eventTrack);
+        let Todas = document.getElementsByTagName('audio');
+
+        if (Atual.paused) {
+            for (let i = 0; i < Todas.length; i++) { Todas[i].pause() }
+            Atual.play();
+        } else {
+            Atual.pause();
+        }
     }
 
     let username = localStorage.userName;
     let userimg = localStorage.userImg;
-
-    
 
     return (
         <div className="AppHome">
@@ -93,18 +89,19 @@ export default function Home({ history }) {
                                 {
                                     tracks.items.map(
                                         track => (
-                                            
+
                                             <div
-                                                
+
                                                 className="Artista"
-                                                onClick={event => document.getElementById(track.id).paused ? (
-                                                    
-                                                    document.getElementById(track.id).play()
-                                                ) : (
-                                                    document.getElementById(track.id).pause()
-                                                )
-                                                
-                                                }
+                                                // onClick={event => document.getElementById(track.id).paused ? (
+
+                                                //     document.getElementById(track.id).play()
+                                                // ) : (
+                                                //     document.getElementById(track.id).pause()
+                                                // )
+
+                                                // }
+                                                onClick={event => genMusicas(track.id)}
                                                 // onChangeCapture={diztrack(track.id)}
                                                 key={track.id}>
                                                 {track.album.images[0] ? (
@@ -159,7 +156,7 @@ export default function Home({ history }) {
                                         artist => (
                                             <div
                                                 className="Artista"
-                                                onClick=''
+                                                onClick={event => history.push('Artista/' + artist.name)}
                                                 key={artist.id}>
                                                 {artist.images[0] ? (
 
