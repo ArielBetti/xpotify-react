@@ -3,6 +3,8 @@ import Routes from '../../routes'
 import './style.css';
 import api from '../../services/api';
 import logo from '../../assets/spotify-white.svg';
+import playbutton from '../../assets/play-button.svg';
+import pausebutton from '../../assets/pause-button.svg';
 import search from '../../assets/search-white.svg';
 
 export default function Home({ history }) {
@@ -36,15 +38,29 @@ export default function Home({ history }) {
     }
 
     function genMusicas(eventTrack) {
+        const Play = document.getElementById('Playbtn' + eventTrack);
+        const Pause = document.getElementById('Pausebtn' + eventTrack);
+        const PauseAll = document.getElementsByClassName('pausepick');
+        const PlayAll = document.getElementsByClassName('allplay')
         let Atual = document.getElementById(eventTrack);
         let Todas = document.getElementsByTagName('audio');
 
         if (Atual.paused) {
-            for (let i = 0; i < Todas.length; i++) { Todas[i].pause() }
+            Pause.classList.add('hiddenObejct');
+            for (let i = 0; i < Todas.length; i++) {
+                Todas[i].pause()
+                PauseAll[i].classList.add('hiddenObject');
+                PlayAll[i].classList.remove('hiddenObject');
+            }
+            Play.classList.add('hiddenObject');
+            Pause.classList.remove('hiddenObject');
             Atual.play();
         } else {
+            Pause.classList.add('hiddenObject')
+            Play.classList.remove('hiddenObject');
             Atual.pause();
         }
+        
     }
 
     let username = localStorage.userName;
@@ -112,6 +128,14 @@ export default function Home({ history }) {
                                                             className="searchpick"
                                                             src={track.album.images[0].url}
                                                             alt="Foto do artista" />
+                                                            <img 
+                                                            id={'Playbtn' + track.id}
+                                                            className="searchpick allplay playpick"
+                                                            src={playbutton}/>
+                                                            <img 
+                                                            id={'Pausebtn' + track.id}
+                                                            className="searchpick pausepick playpick hiddenObject"
+                                                            src={pausebutton}/>
                                                     </div>
                                                 ) : (
                                                         <div

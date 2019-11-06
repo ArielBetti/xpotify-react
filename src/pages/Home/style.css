@@ -113,6 +113,23 @@
     border-radius: 50px;
 }
 
+.hiddenObject {
+    display: none;
+}
+
+.playpick {
+    position: absolute;
+    transform: translateX(-100%);
+    background-color: rgba(0,0,0,0.6);
+    opacity: 0;
+    transition: 500ms;
+    box-shadow: 0px 0px 15px rgb(0, 217, 95, 0.3);
+}
+
+.playpick:hover {
+    opacity: 1;
+}
+
 .searchname {
     font-weight: bold;
     font-size: 12px;
