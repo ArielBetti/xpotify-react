@@ -165,10 +165,14 @@
     
 }
 
+.IdentifyPlayer {
+    opacity: 1;
+}
+
 .ItensSearch {
     max-width: 95%;
     margin: auto;
-    height: 66vh;
+    height: 68vh;
     overflow: auto;
 }
 

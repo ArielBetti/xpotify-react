@@ -53,6 +53,7 @@ export default function Home({ history }) {
                 PlayAll[i].classList.remove('hiddenObject');
             }
             Play.classList.add('hiddenObject');
+            Pause.classList.add('IdentifyPlayer');
             Pause.classList.remove('hiddenObject');
             Atual.play();
         } else {
