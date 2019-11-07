@@ -42,9 +42,11 @@ export default function Home({ history }) {
         const Play = document.getElementById('Playbtn' + eventTrack);
         const Pause = document.getElementById('Pausebtn' + eventTrack);
         const NotF = document.getElementById('NotF' + eventTrack);
+        const Track = document.getElementById('Track' + eventTrack);
         const PauseAll = document.getElementsByClassName('pausepick');
         const PlayAll = document.getElementsByClassName('allplay');
         const AllNotF = document.getElementsByClassName('err404');
+        const AllTracks = document.getElementsByClassName("Tracks");
         let Atual = document.getElementById(eventTrack);
         let Todas = document.getElementsByTagName('audio');
 
@@ -52,12 +54,14 @@ export default function Home({ history }) {
             Pause.classList.add('hiddenObejct');
             for (let i = 0; i < Todas.length; i++) {
                 Todas[i].pause()
+                AllTracks[i].classList.remove('PlayingNow')
                 PauseAll[i].classList.add('hiddenObject');
                 PlayAll[i].classList.remove('hiddenObject');
                 AllNotF[i].classList.add('hiddenObject')
             }
             Play.classList.add('hiddenObject');
             Pause.classList.add('IdentifyPlayer');
+            Track.classList.add("PlayingNow");
             Pause.classList.remove('hiddenObject');
             Atual.play();
             if(Atual.src == '') {
@@ -65,16 +69,13 @@ export default function Home({ history }) {
                 Pause.classList.add('hiddenObject');
                 NotF.classList.remove('hiddenObject');
                 NotF.classList.add('IdentifyPlayer');
-
-                console.log(NotF);
+                Track.classList.add('PlayingNow');
             }
-            console.log(Atual.src);
         } else {
             Pause.classList.add('hiddenObject')
             Play.classList.remove('hiddenObject');
             Atual.pause();
         }
-        
     }
 
     let username = localStorage.userName;
@@ -121,11 +122,13 @@ export default function Home({ history }) {
                                         track => (
 
                                             <div
-
-                                                className="Artista"
+                                                
+                                                className="Artista Tracks"
                                                 onClick={event => genMusicas(track.id)}
                                                 // onChangeCapture={diztrack(track.id)}
-                                                key={track.id}>
+                                                key={track.id}
+                                                id={'Track' + track.id}
+                                                >
                                                 {track.album.images[0] ? (
 
                                                     <div
