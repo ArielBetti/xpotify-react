@@ -5,6 +5,7 @@ import api from '../../services/api';
 import logo from '../../assets/spotify-white.svg';
 import playbutton from '../../assets/play-button.svg';
 import pausebutton from '../../assets/pause-button.svg';
+import notafound from '../../assets/warning-squad.svg'
 import search from '../../assets/search-white.svg';
 
 export default function Home({ history }) {
@@ -40,8 +41,10 @@ export default function Home({ history }) {
     function genMusicas(eventTrack) {
         const Play = document.getElementById('Playbtn' + eventTrack);
         const Pause = document.getElementById('Pausebtn' + eventTrack);
+        const NotF = document.getElementById('NotF' + eventTrack);
         const PauseAll = document.getElementsByClassName('pausepick');
-        const PlayAll = document.getElementsByClassName('allplay')
+        const PlayAll = document.getElementsByClassName('allplay');
+        const AllNotF = document.getElementsByClassName('err404');
         let Atual = document.getElementById(eventTrack);
         let Todas = document.getElementsByTagName('audio');
 
@@ -51,11 +54,21 @@ export default function Home({ history }) {
                 Todas[i].pause()
                 PauseAll[i].classList.add('hiddenObject');
                 PlayAll[i].classList.remove('hiddenObject');
+                AllNotF[i].classList.add('hiddenObject')
             }
             Play.classList.add('hiddenObject');
             Pause.classList.add('IdentifyPlayer');
             Pause.classList.remove('hiddenObject');
             Atual.play();
+            if(Atual.src == '') {
+                Play.classList.add('hiddenObject');
+                Pause.classList.add('hiddenObject');
+                NotF.classList.remove('hiddenObject');
+                NotF.classList.add('IdentifyPlayer');
+
+                console.log(NotF);
+            }
+            console.log(Atual.src);
         } else {
             Pause.classList.add('hiddenObject')
             Play.classList.remove('hiddenObject');
@@ -110,14 +123,6 @@ export default function Home({ history }) {
                                             <div
 
                                                 className="Artista"
-                                                // onClick={event => document.getElementById(track.id).paused ? (
-
-                                                //     document.getElementById(track.id).play()
-                                                // ) : (
-                                                //     document.getElementById(track.id).pause()
-                                                // )
-
-                                                // }
                                                 onClick={event => genMusicas(track.id)}
                                                 // onChangeCapture={diztrack(track.id)}
                                                 key={track.id}>
@@ -137,6 +142,10 @@ export default function Home({ history }) {
                                                             id={'Pausebtn' + track.id}
                                                             className="searchpick pausepick playpick hiddenObject"
                                                             src={pausebutton}/>
+                                                            <img 
+                                                            id={'NotF' + track.id}
+                                                            className="searchpick err404 playpick hiddenObject"
+                                                            src={notafound}/>
                                                     </div>
                                                 ) : (
                                                         <div
