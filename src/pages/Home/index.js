@@ -43,10 +43,14 @@ export default function Home({ history }) {
         const Pause = document.getElementById('Pausebtn' + eventTrack);
         const NotF = document.getElementById('NotF' + eventTrack);
         const Track = document.getElementById('Track' + eventTrack);
+        const Prog = document.getElementById('Progress' + eventTrack);
+        const ProgBar = document.getElementById('ProgressBar' + eventTrack);
         const PauseAll = document.getElementsByClassName('pausepick');
         const PlayAll = document.getElementsByClassName('allplay');
         const AllNotF = document.getElementsByClassName('err404');
         const AllTracks = document.getElementsByClassName("Tracks");
+        const AllProgs = document.getElementsByClassName("ProgressMusic");
+        const AllProgBars = document.getElementsByClassName('musicprogressbar');
         let Atual = document.getElementById(eventTrack);
         let Todas = document.getElementsByTagName('audio');
 
@@ -54,26 +58,36 @@ export default function Home({ history }) {
             Pause.classList.add('hiddenObejct');
             for (let i = 0; i < Todas.length; i++) {
                 Todas[i].pause()
-                AllTracks[i].classList.remove('PlayingNow')
+                AllProgBars[i].classList.add('pauseanimation');
+                AllProgs[i].classList.add('DisplayPause');
+                AllTracks[i].classList.remove('PlayingNow');
                 PauseAll[i].classList.add('hiddenObject');
                 PlayAll[i].classList.remove('hiddenObject');
-                AllNotF[i].classList.add('hiddenObject')
+                AllNotF[i].classList.add('hiddenObject');
             }
             Play.classList.add('hiddenObject');
             Pause.classList.add('IdentifyPlayer');
             Track.classList.add("PlayingNow");
             Pause.classList.remove('hiddenObject');
+            Prog.classList.remove('DisplayPause');
+            ProgBar.classList.remove('pauseanimation');
+            ProgBar.classList.add('playanimation');
             Atual.play();
-            if(Atual.src == '') {
+            if (Atual.src == '') {
                 Play.classList.add('hiddenObject');
                 Pause.classList.add('hiddenObject');
                 NotF.classList.remove('hiddenObject');
                 NotF.classList.add('IdentifyPlayer');
                 Track.classList.add('PlayingNow');
+                Prog.classList.remove('DisplayPause');
+                ProgBar.classList.add('playanimation');
             }
         } else {
-            Pause.classList.add('hiddenObject')
+            Pause.classList.add('hiddenObject');
+            Track.classList.remove('PlayingNow');
             Play.classList.remove('hiddenObject');
+            Prog.classList.add('DisplayPause');
+            ProgBar.classList.add('pauseanimation');
             Atual.pause();
         }
     }
@@ -122,13 +136,13 @@ export default function Home({ history }) {
                                         track => (
 
                                             <div
-                                                
+
                                                 className="Artista Tracks"
                                                 onClick={event => genMusicas(track.id)}
                                                 // onChangeCapture={diztrack(track.id)}
                                                 key={track.id}
                                                 id={'Track' + track.id}
-                                                >
+                                            >
                                                 {track.album.images[0] ? (
 
                                                     <div
@@ -137,18 +151,18 @@ export default function Home({ history }) {
                                                             className="searchpick"
                                                             src={track.album.images[0].url}
                                                             alt="Foto do artista" />
-                                                            <img 
+                                                        <img
                                                             id={'Playbtn' + track.id}
                                                             className="searchpick allplay playpick"
-                                                            src={playbutton}/>
-                                                            <img 
+                                                            src={playbutton} />
+                                                        <img
                                                             id={'Pausebtn' + track.id}
                                                             className="searchpick pausepick playpick hiddenObject"
-                                                            src={pausebutton}/>
-                                                            <img 
+                                                            src={pausebutton} />
+                                                        <img
                                                             id={'NotF' + track.id}
                                                             className="searchpick err404 playpick hiddenObject"
-                                                            src={notafound}/>
+                                                            src={notafound} />
                                                     </div>
                                                 ) : (
                                                         <div
@@ -165,6 +179,9 @@ export default function Home({ history }) {
                                                 </div>
                                                 <div className="searchtype">
                                                     {track.artists[0].name}
+                                                </div>
+                                                <div id={"Progress" + track.id} className="ProgressMusic DisplayPause">
+                                                    <div id={'ProgressBar' + track.id} className="musicprogressbar timermusic pauseanimation"></div>
                                                 </div>
                                                 <audio id={track.id} src={track.preview_url}></audio>
 

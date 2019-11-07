@@ -115,7 +115,7 @@
 }
 
 .hiddenObject {
-    display: none;
+    display: none !important;
 }
 
 .playpick {
@@ -124,6 +124,7 @@
     background-color: rgba(0,0,0,0.6);
     opacity: 0;
     transition: 500ms;
+    border: solid 1px #00d95f;
     box-shadow: 0px 0px 15px rgb(0, 217, 95, 0.3);
 }
 
@@ -210,4 +211,50 @@
 
 .PlayingNow > .searchtype {
     color: #00d95f;
+}
+
+.ProgressMusic {
+    background-color: #1b1b1b;
+    width: 80%;
+    height: 3px;
+    transform: translateY(25px);
+    border-radius: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    top: -20px;
+}
+
+.musicprogressbar {
+    background-color: #00d95f;
+    width: 0%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+}
+
+.timermusic {
+    animation: loading 30000ms;
+}
+
+.playanimation {
+    animation-play-state: running !important;
+}
+
+.pauseanimation {
+    animation-play-state: paused !important;
+}
+
+.DisplayPause {
+    opacity: 0;
+}
+
+@keyframes loading {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
 }
