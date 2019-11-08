@@ -5,6 +5,8 @@
 # Esse projeto já está em Deploy !
 ***Veja aqui:*** **https://xpotify-react.herokuapp.com/**
 
+<img src="Documents/loginscreen-min.png">
+
 # Configurando localmente.
 
 ## Instalação
@@ -47,6 +49,10 @@ yarn start
 ```
 
 #### Veja o projeto no endereço http://localhost:3000
+
+<img src="Documents/selectionscreen-min.png">
+<img src="Documents/outherscreen-min.png">
+
 
 ### Sobre
 
