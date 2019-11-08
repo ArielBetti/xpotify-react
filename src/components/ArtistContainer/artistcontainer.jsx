@@ -14,7 +14,9 @@ export default function ArtistContainer(props) {
                         {
                             props.artists.map(
                                 artist => (
-                                    <Artist history={props.history} artists={artist} ></Artist>
+                                    <Artist 
+                                    key={artist.id}
+                                    history={props.history} artists={artist} ></Artist>
                                 )
                             )
                         }

@@ -15,7 +15,9 @@ export default function AlbumContainer(props) {
                     {
                         props.albums.map(
                             album => (
-                               <Album history={props.history} albums={album}></Album>
+                               <Album 
+                               key={album.id}
+                               history={props.history} albums={album}></Album>
                             )
                         )
                     }
