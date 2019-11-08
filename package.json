@@ -14,7 +14,7 @@
     "react-dom": "^16.1.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "1.0.17",
-    "request": "~2.34.0"
+    "request": "~2.88.0"
   },
   "scripts": {
     "start": "react-scripts start",
