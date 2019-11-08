@@ -22,7 +22,7 @@ export default function Album(props) {
             ) : (
                     <div
                         className="teste">
-                        <div className="NullSelect"></div>
+                        <div onClick={event => event.stopPropagation()} className="NullSelect"></div>
                         <img
                             className="searchpick"
                             src={logo}
