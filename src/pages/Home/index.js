@@ -3,15 +3,14 @@ import Routes from '../../routes'
 import './style.css';
 import api from '../../services/api';
 import logo from '../../assets/spotify-white.svg';
-import playbutton from '../../assets/play-button.svg';
-import pausebutton from '../../assets/pause-button.svg';
-import notafound from '../../assets/warning-squad.svg'
 import search from '../../assets/search-white.svg';
 
 import Header from '../../components/Header/header';
 import Search from '../../components/Search/search';
 import TrackContainer from '../../components/TrackContainer/trackcontainer';
 import ArtistContainer from '../../components/ArtistContainer/artistcontainer';
+import AlbumContainer from '../../components/AlbumContainer/albumcontainer';
+
 export default function Home({ history }) {
 
     const [inputSearch, SetinputSearch] = useState('');
@@ -28,7 +27,7 @@ export default function Home({ history }) {
             .then(function (response) {
                 // handle success
                 setArtists(response.data.artists.items);
-                setAlbums(response.data.albums);
+                setAlbums(response.data.albums.items);
                 setTracks(response.data.tracks.items);
                 setPlaylists(response.data.playlists);
                 console.log(artists);
@@ -53,58 +52,7 @@ export default function Home({ history }) {
             <section className="ItensSearch">
                 <TrackContainer tracks={tracks} ></TrackContainer>
                <ArtistContainer history={history} artists={artists}></ArtistContainer>
-                <div id="style-15" className="itemSearch">
-                    {albums.items && albums.items.length > 0 ? (
-                        <div>
-                            <h3 className="TypeTitle">Albums</h3>
-                            <div className="ContainerSearch">
-                                <div className="sectionType">
-                                </div>
-                                {
-                                    albums.items.map(
-                                        album => (
-                                            <div
-                                                onClick={event => history.push('Album/' + album.name)}
-                                                className="Artista"
-                                                key={album.id}>
-                                                
-                                                {album.images[0] ? (
-
-                                                    <div
-                                                        className="teste">
-                                                        <img
-                                                            className="searchpick"
-                                                            src={album.images[0].url}
-                                                            alt="Foto do artista" />
-                                                    </div>
-                                                ) : (
-                                                        <div
-                                                            className="teste">
-                                                            <img
-                                                                className="searchpick"
-                                                                src={logo}
-                                                                alt="Foto do artista" />
-                                                        </div>
-                                                    )
-                                                }
-                                                <div className="searchname">
-                                                    {album.name}
-                                                </div>
-                                                <div className="searchtype">
-                                                    {album.type}
-                                                </div>
-
-                                            </div>
-                                        )
-                                    )
-                                }
-                            </div>
-                        </div>
-                    ) : (
-                            <div></div>
-                        )
-                    }
-                </div>
+               <AlbumContainer history={history} albums={albums}></AlbumContainer>
                 <div id="style-15" className="itemSearch testeAi">
                     {playlists.items && playlists.items.length > 0 ? (
                         <div>

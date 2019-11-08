@@ -6,7 +6,6 @@ import logo from '../../assets/spotify-white.svg';
 
 export default function Track(props) {
 
-    // const [track, settrack] = useState(props.track);
     const track = props.track;
 
     function genMusicas(eventTrack) {

@@ -1,10 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Routes from '../../routes';
 import logo from '../../assets/spotify-white.svg';
 
 export default function Artist(props) {
-
-    // const [artists, setArtist] = useState(props.artists);    
 
     const artists = props.artists;
 

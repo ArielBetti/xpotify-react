@@ -7,7 +7,7 @@ import retorna from '../../assets/return.svg';
 
 import TrackContainer from '../../components/TrackContainer/trackcontainer';
 
-export default function Select({ history, match }) {
+export default function Artista({ history, match }) {
     const token = localStorage.access_token;
     const [response, setresponse] = useState();
     const [artist, setartist] = useState();
@@ -26,7 +26,7 @@ export default function Select({ history, match }) {
                 );
                 setresponse(res.data);
                 settracks(res.data.tracks);
-                console.log(res.data.tracks);
+                console.log('aaaa', res.data.tracks);
                 console.log("tracks: ", tracks);
 
                 res = await api.get(`/artists/${match.params.id}`,
@@ -37,7 +37,7 @@ export default function Select({ history, match }) {
                     }
                 );
                 setartist(res.data);
-                console.log(tracks);
+                console.log('aaaa', tracks);
             }
         }
         getResponse()
