@@ -30,7 +30,6 @@ export default function Home({ history }) {
                 setAlbums(response.data.albums.items);
                 setTracks(response.data.tracks.items);
                 setPlaylists(response.data.playlists);
-                console.log(artists);
             })
             .catch(function (error) {
                 console.log(error);

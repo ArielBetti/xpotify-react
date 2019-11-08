@@ -26,9 +26,7 @@ export default function Artista({ history, match }) {
                 );
                 setresponse(res.data);
                 settracks(res.data.tracks);
-                console.log('aaaa', res.data.tracks);
-                console.log("tracks: ", tracks);
-
+               
                 res = await api.get(`/artists/${match.params.id}`,
                     {
                         headers: {
@@ -37,7 +35,6 @@ export default function Artista({ history, match }) {
                     }
                 );
                 setartist(res.data);
-                console.log('aaaa', tracks);
             }
         }
         getResponse()

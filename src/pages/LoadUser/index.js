@@ -43,7 +43,6 @@ export default function LoadUser({ history }) {
         api.get('/me?' + token)
             .then(function (response) {
                 // handle success
-                console.log(response);
                 const userDetails = {
                     userName: response.data.display_name,
                     userImg: response.data.images[0].url

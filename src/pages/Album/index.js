@@ -103,9 +103,7 @@ export default function Select({ history, match }) {
                 setalbum(res.data);
                 settracks(res.data.tracks.items);
             }
-            // console.log(album);
         }
-        console.log('Esses são as tracks', tracks);
 
         getResponse()
     });
