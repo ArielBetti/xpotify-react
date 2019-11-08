@@ -53,56 +53,6 @@ export default function Home({ history }) {
                 <TrackContainer tracks={tracks} ></TrackContainer>
                <ArtistContainer history={history} artists={artists}></ArtistContainer>
                <AlbumContainer history={history} albums={albums}></AlbumContainer>
-                <div id="style-15" className="itemSearch testeAi">
-                    {playlists.items && playlists.items.length > 0 ? (
-                        <div>
-                            <h3 className="TypeTitle">Playlists</h3>
-                            <div className="ContainerSearch">
-                                <div className="sectionType">
-                                </div>
-                                {
-                                    playlists.items.map(
-                                        playlist => (
-                                            <div
-                                                className="Artista"
-                                                key={playlist.id}>
-                                                {playlist.images[0] ? (
-
-                                                    <div
-                                                        className="teste">
-                                                        <img
-                                                            className="searchpick"
-                                                            src={playlist.images[0].url}
-                                                            alt="Foto do artista" />
-                                                    </div>
-                                                ) : (
-                                                        <div
-                                                            className="teste">
-                                                            <img
-                                                                className="searchpick"
-                                                                src={logo}
-                                                                alt="Foto do artista" />
-                                                        </div>
-                                                    )
-                                                }
-                                                <div className="searchname">
-                                                    {playlist.name}
-                                                </div>
-                                                <div className="searchtype">
-                                                    {playlist.owner.display_name}
-                                                </div>
-
-                                            </div>
-                                        )
-                                    )
-                                }
-                            </div>
-                        </div>
-                    ) : (
-                            <div></div>
-                        )
-                    }
-                </div>
             </section>
         </div>
     );
