@@ -22,6 +22,7 @@ export default function Artist(props) {
             ) : (
                     <div
                         className="teste">
+                        <div className="NullSelect"></div>
                         <img
                             className="searchpick"
                             src={logo}

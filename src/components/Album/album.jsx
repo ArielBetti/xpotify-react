@@ -5,7 +5,7 @@ import logo from '../../assets/spotify-white.svg';
 export default function Album(props) {
 
     const albums = props.albums;
-    
+
     return (
         <div
             onClick={event => props.history.push('Album/' + albums.id)}
@@ -22,6 +22,7 @@ export default function Album(props) {
             ) : (
                     <div
                         className="teste">
+                        <div className="NullSelect"></div>
                         <img
                             className="searchpick"
                             src={logo}

@@ -12,6 +12,7 @@ export default function Artista({ history, match }) {
     const [response, setresponse] = useState();
     const [artist, setartist] = useState();
     const [tracks, settracks] = useState();
+    const [imgalbum, setimgalbum] = useState();
 
     useEffect(() => {
         async function getResponse() {
@@ -26,7 +27,8 @@ export default function Artista({ history, match }) {
                 );
                 setresponse(res.data);
                 settracks(res.data.tracks);
-               
+                setimgalbum(res.data.tracks[0].album.images[0].url)
+
                 res = await api.get(`/artists/${match.params.id}`,
                     {
                         headers: {
@@ -36,6 +38,8 @@ export default function Artista({ history, match }) {
                 );
                 setartist(res.data);
             }
+            console.log('artists', imgalbum);
+
         }
         getResponse()
     });
@@ -59,7 +63,7 @@ export default function Artista({ history, match }) {
                         {(artist || {}).images ? (
                             <img
                                 className="imgselect"
-                                src={(artist || {}).images[0].url}
+                                src={imgalbum}
                                 alt="Foto do artista" />
                         ) : (
                                 <div
