@@ -67,7 +67,7 @@ export default function LoadUser({ history }) {
     /*Faz Animação especial de loading*/
     setTimeout(function teste() {
         history.push('Home');
-    }, 1300);
+    }, 2000);
 
     return (
         <div>
