@@ -12,7 +12,7 @@ html, body, #root {
   min-height: 100%;
 }
 
-body::-webkit-scrollbar-track
+body, .App::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
 	background-color: rgb(33, 33, 33, 0.3);
@@ -112,4 +112,27 @@ body {
   background-color: rgb(19, 19, 19);
   position: absolute;
   bottom: 0;
+}
+
+.ReturnPage {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ReturnPage > input {
+  border: none;
+  background-color: transparent;
+  color: #00d95f;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ReturnPage > img {
+  height: 30px;
 }

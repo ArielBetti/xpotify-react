@@ -1,0 +1,33 @@
+.SelectContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 30px;
+}
+
+.cardselectcontainer {
+    margin-top: 30px;
+    background-color: rgb(33, 33, 33, 0.8);
+    height: 220px;
+    width: 230px;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.imgselect {
+    margin-top: 15px;
+    height: 90px;
+    width: 90px;
+    border-radius: 50px;
+}
+
+.cardselectcontainer > h2 {
+    color: white;
+    font-size: 1.25em;
+    transform: translateY(25px);
+    width: 100%;
+    height: 50px;
+    overflow: hidden;
+}
