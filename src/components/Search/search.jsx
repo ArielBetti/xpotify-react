@@ -14,7 +14,6 @@ export default function Search(props) {
                 placeholder="Busque por artistas ou músicas"
                 onKeyUp={props.onKeyUp}
             />
-            <button><img src={props.search} alt="" /></button>
         </form>
     );
 }
