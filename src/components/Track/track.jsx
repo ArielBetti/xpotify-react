@@ -92,7 +92,7 @@ export default function Track(props) {
                     className="teste">
                     <img
                         className="searchpick"
-                        src={track.album.images[0].url}
+                        src={track.album.images[2].url}
                         alt="Foto do artista" />
                     <img
                         id={'Playbtn' + track.id}

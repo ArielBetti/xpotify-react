@@ -16,7 +16,7 @@ export default function Album(props) {
                     className="teste">
                     <img
                         className="searchpick"
-                        src={albums.images[0].url}
+                        src={albums.images[2].url}
                         alt="Foto do artista" />
                 </div>
             ) : (

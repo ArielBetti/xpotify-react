@@ -16,7 +16,7 @@ export default function Artist(props) {
                     className="teste">
                     <img
                         className="searchpick"
-                        src={artists.images[0].url}
+                        src={artists.images[2].url}
                         alt="Foto do artista" />
                 </div>
             ) : (
