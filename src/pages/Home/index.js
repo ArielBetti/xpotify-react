@@ -23,7 +23,7 @@ export default function Home({ history }) {
         const token = 'access_token=' + localStorage.access_token
 
         SetinputSearch(value);
-        await api.get('/search?q=' + inputSearch + '&type=track%2Cartist%2Calbum%2Cplaylist&type=track&artist&album&playlist&market=US&limit=10&offset=1&' + token)
+        await api.get('/search?q=' + value + '&type=track%2Cartist%2Calbum%2Cplaylist&type=track&artist&album&playlist&market=US&limit=10&offset=1&' + token)
             .then(function (response) {
                 // handle success
                 setArtists(response.data.artists.items);
