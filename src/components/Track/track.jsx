@@ -26,7 +26,7 @@ export default function Track(props) {
         let Todas = document.getElementsByTagName('audio');
 
         if (Atual.paused) {
-            if(Atual.currentTime == 0) {
+            if (Atual.currentTime == 0) {
                 ProgBar.classList.remove('timermusic');
                 ProgBar.classList.remove('playanimation');
             }
@@ -79,61 +79,68 @@ export default function Track(props) {
 
     return (
         <div
-        className="Artista Tracks"
-        onClick={() => genMusicas(track.id)}
-        // onChangeCapture={diztrack(track.id)}
-        key={track.id}
-        id={'Track' + track.id}
-    >
-        {track.album.images[0] ? (
-
-            <div
-                className="teste">
-                {
-                    !track.preview_url ? (
-                        <div className="NullSelect"></div>
-                    ) : (
-                            <div></div>
-                        )
-                }
-                <img
-                    className="searchpick"
-                    src={track.album.images[2].url}
-                    alt="Foto do artista" />
-                <img
-                    id={'Playbtn' + track.id}
-                    className="searchpick allplay playpick"
-                    src={playbutton} />
-                <img
-                    id={'Pausebtn' + track.id}
-                    className="searchpick pausepick playpick hiddenObject"
-                    src={pausebutton} />
-                <img
-                    id={'NotF' + track.id}
-                    className="searchpick err404 playpick hiddenObject"
-                    src={notafound} />
-            </div>
-        ) : (
+            className="Artista Tracks"
+            onClick={() => genMusicas(track.id)}
+            // onChangeCapture={diztrack(track.id)}
+            key={track.id}
+            id={'Track' + track.id}
+        >
+            {track.album.images[0] ? (
                 <div
                     className="teste">
-                    <img
-                        className="searchpick"
-                        src={logo}
-                        alt="Foto do artista" />
-                </div>
-            )
-        }
-        <div className="searchname">
-            {track.name}
-        </div>
-        <div className="searchtype">
-            {track.artists[0].name}
-        </div>
-        <div id={"Progress" + track.id} className="ProgressMusic DisplayPause">
-            <div id={'ProgressBar' + track.id} className="musicprogressbar timermusic pauseanimation"></div>
-        </div>
-        <audio id={track.id} src={track.preview_url}></audio>
+                    {
+                        !track.preview_url ? (
+                            <div className="NullSelect"></div>
+                        ) : (
+                                <div></div>
+                            )
+                    }
+                    {track.album.images.length == 3 ? (
+                        <img
+                            className="searchpick"
+                            src={track.album.images[2].url}
+                            alt="Foto do artista" />
+                    ) : (
+                            <img
+                                className="searchpick"
+                                src={track.album.images[0].url}
+                                alt="Foto do artista" />
+                        )}
 
-    </div>
+                    <img
+                        id={'Playbtn' + track.id}
+                        className="searchpick allplay playpick"
+                        src={playbutton} />
+                    <img
+                        id={'Pausebtn' + track.id}
+                        className="searchpick pausepick playpick hiddenObject"
+                        src={pausebutton} />
+                    <img
+                        id={'NotF' + track.id}
+                        className="searchpick err404 playpick hiddenObject"
+                        src={notafound} />
+                </div>
+            ) : (
+                    <div
+                        className="teste">
+                        <img
+                            className="searchpick"
+                            src={logo}
+                            alt="Foto do artista" />
+                    </div>
+                )
+            }
+            <div className="searchname">
+                {track.name}
+            </div>
+            <div className="searchtype">
+                {track.artists[0].name}
+            </div>
+            <div id={"Progress" + track.id} className="ProgressMusic DisplayPause">
+                <div id={'ProgressBar' + track.id} className="musicprogressbar timermusic pauseanimation"></div>
+            </div>
+            <audio id={track.id} src={track.preview_url}></audio>
+
+        </div>
     );
 }

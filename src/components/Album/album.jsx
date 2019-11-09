@@ -12,13 +12,21 @@ export default function Album(props) {
             className="Artista"
             key={albums.id}>
             {albums.images[0] ? (
-                <div
-                    className="teste">
-                    <img
-                        className="searchpick"
-                        src={albums.images[2].url}
-                        alt="Foto do artista" />
-                </div>
+                 <div
+                 className="teste">
+                 {albums.images.length > 2 ? (
+                     <img
+                     className="searchpick"
+                     src={albums.images[2].url}
+                     alt="Foto do artista" />
+                 ) : (
+                     <img
+                     className="searchpick"
+                     src={albums.images[0].url}
+                     alt="Foto do artista" />
+                 )}
+                 
+             </div>
             ) : (
                     <div
                         className="teste">

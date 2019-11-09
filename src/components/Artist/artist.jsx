@@ -12,12 +12,18 @@ export default function Artist(props) {
             onClick={event => props.history.push('Artista/' + artists.id)}
             key={artists.id}>
             {artists.images[0] ? (
-                <div
-                    className="teste">
-                    <img
-                        className="searchpick"
-                        src={artists.images[2].url}
-                        alt="Foto do artista" />
+                <div className="teste">
+                    {artists.images.length == 3 ? (
+                        <img
+                            className="searchpick"
+                            src={artists.images[2].url}
+                            alt="Foto do artista" />
+                    ) : (
+                            <img
+                                className="searchpick"
+                                src={artists.images[0].url}
+                                alt="Foto do artista" />
+                        )}
                 </div>
             ) : (
                     <div
