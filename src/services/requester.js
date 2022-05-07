@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const requester = (config, contentType) => {
   const service = axios.create({
-    baseURL: config.baseURL || 'https://api.spotify.com/v1',
+    baseURL: config.baseURL || "https://api.spotify.com/v1",
     ...config.options,
   });
 
@@ -21,23 +21,23 @@ export const requester = (config, contentType) => {
 
   return {
     async get(uri) {
-      const response = (await service.get) < T > uri;
+      const response = (await service.get)(uri);
       return response;
     },
     async post(uri, data) {
-      const response = (await service.post) < T > (uri, data);
+      const response = (await service.post)(uri, data);
       return response;
     },
     async put(uri, data) {
-      const response = (await service.put) < T > (uri, data);
+      const response = (await service.put)(uri, data);
       return response;
     },
     async patch(uri, data) {
-      const response = (await service.patch) < T > (uri, data);
+      const response = (await service.patch)(uri, data);
       return response;
     },
     async delete(uri, data) {
-      const response = (await service.delete) < T > (uri, data);
+      const response = (await service.delete)(uri, data);
       return response;
     },
   };

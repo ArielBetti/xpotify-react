@@ -1,22 +1,22 @@
-import React from 'react' ;
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from './pages/Home';
-import Login from './pages/Login';
-import LoadUser from './pages/LoadUser';
-import Artista from './pages/Artista';
-import Album from './pages/Album';
+// pages
+import { Album, Artista, Home, Login, LoadUser } from "./pages";
 
-export default function Routes() {
-    return (
-        <BrowserRouter>
-            <Switch>
-                <Route path="/" exact component={Login}/>
-                <Route path="/home" component={Home}/>
-                <Route path="/LoadUser" component={LoadUser}/>
-                <Route path="/Artista/:id" component={Artista}/>
-                <Route path="/Album/:id" component={Album}/>
-            </Switch>
-        </BrowserRouter>
-    )
-}
+const AppRouter = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/autenticando" element={<LoadUser />} />
+        <Route path="/home" element={<Home />}>
+          <Route path="artista/:id" element={<Artista />} />
+          <Route path="album/:id" element={<Album />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+};
+
+export default AppRouter;
