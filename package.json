@@ -9,17 +9,36 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "~4.0.0",
+    "lodash": "^4.17.21",
     "querystring": "~0.2.0",
     "react": "^16.1.0",
     "react-dom": "^16.1.0",
-    "react-router-dom": "^5.1.2",
+    "react-icons": "^4.3.1",
+    "react-loader-spinner": "^6.0.0-0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
-    "request": "~2.34.0"
+    "recoil": "^0.7.3-alpha.1",
+    "request": "~2.34.0",
+    "styled-components": "^5.3.5",
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {}
 }
