@@ -1,5 +1,5 @@
 // assets
-import empty from "../../assets/illustrations/empty2.svg";
+import { EmptyIllustrationRender } from "../../assets/illustrations/empty";
 
 // typography
 import * as Typography from "../../Typography";
@@ -10,7 +10,7 @@ import * as Atom from "./style";
 const Empty = () => {
   return (
     <Atom.Container>
-      <Atom.EmptySvg src={empty} />
+      <EmptyIllustrationRender />
       <Typography.ParagraphBold>Parece vazio...</Typography.ParagraphBold>
     </Atom.Container>
   );
