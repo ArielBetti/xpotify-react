@@ -1,5 +1,8 @@
 import axios from "axios";
 
+// refresher recoil token state method
+import { getNewToken } from '../context';
+
 export const requester = (config, contentType) => {
   const service = axios.create({
     baseURL: config.baseURL || "https://api.spotify.com/v1",
@@ -10,13 +13,24 @@ export const requester = (config, contentType) => {
     (req) => {
       req.headers = {
         "Content-Type": contentType || "application/json",
-        "Access-Control-Allow-Origin": "*",
-        ...config,
+        Authorization: config.Authorization || window.localStorage.access_token,
+        ...config.headers,
       };
 
       return req;
     },
     (error) => Promise.reject(error)
+  );
+
+  service.interceptors.response.use(
+    (res) => res,
+    (error) => {
+      console.log('error', error);
+      if (error?.response?.status === 401) {
+        console.log('deu aqui')
+        getNewToken();
+      }
+    }
   );
 
   return {
