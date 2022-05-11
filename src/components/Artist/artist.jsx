@@ -1,48 +1,22 @@
-import React from 'react';
-import Routes from '../../routes';
-import logo from '../../assets/spotify-white.svg';
+import { useNavigate } from "react-router-dom";
+import logo from "../../assets/spotify-white.svg";
 
-export default function Artist(props) {
+// components
+import Card from "../Card";
 
-    const artists = props.artists;
+const Artist = ({ artist }) => {
+  const navigate = useNavigate();
 
-    return (
-        <div
-            className="Artista"
-            onClick={event => props.history.push('Artista/' + artists.id)}
-            key={artists.id}>
-            {artists.images[0] ? (
-                <div className="teste">
-                    {artists.images.length == 3 ? (
-                        <img
-                            className="searchpick"
-                            src={artists.images[2].url}
-                            alt="Foto do artista" />
-                    ) : (
-                            <img
-                                className="searchpick"
-                                src={artists.images[0].url}
-                                alt="Foto do artista" />
-                        )}
-                </div>
-            ) : (
-                    <div
-                        className="teste">
-                        <div onClick={event => event.stopPropagation()} className="NullSelect"></div>
-                        <img
-                            className="searchpick"
-                            src={logo}
-                            alt="Foto do artista" />
-                    </div>
-                )
-            }
-            <div className="searchname">
-                {artists.name}
-            </div>
-            <div className="searchtype">
-                {artists.type}
-            </div>
+  return (
+    <Card
+      actionClick={() => navigate(`/artista/${artist.id}`)}
+      marginGap="10px 25px 10px 3px"
+      image={artist?.images[2]?.url || artist?.images[0]?.url || logo}
+      ariaLabel="Foto do artista"
+      title={artist?.name}
+      description={artist?.type}
+    />
+  );
+};
 
-        </div>
-    );
-}
+export default Artist;
