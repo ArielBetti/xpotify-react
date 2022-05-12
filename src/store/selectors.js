@@ -79,8 +79,8 @@ export const selectorGetArtistTracks = selectorFamily({
     },
 });
 
-export const selectorGetArtistAlbuns = selectorFamily({
-  key: "GetArtistAlbuns",
+export const selectorGetArtist = selectorFamily({
+  key: "GetArtist",
   get:
     (id) =>
     async ({ get }) => {
@@ -91,6 +91,23 @@ export const selectorGetArtistAlbuns = selectorFamily({
       const { data } = await requester({
         Authorization: token,
       }).get(`/artists/${id}`);
+
+      return data;
+    },
+});
+
+export const selectorGetArtistAlbums = selectorFamily({
+  key: "GetArtistAlbums",
+  get:
+    (id) =>
+    async ({ get }) => {
+      const token = get(selectorGetToken);
+
+      if (!id) return null;
+
+      const { data } = await requester({
+        Authorization: token,
+      }).get(`/artists/${id}/albums`);
 
       return data;
     },
