@@ -12,7 +12,8 @@ export const SearchInput = styled.input`
   padding: 10px;
   border-radius: 4px;
   border: 2px solid transparent;
-  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.7);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
   transition: ${(props) => props.theme.transitions[1]};
   width: 100%;
   margin-top: 20px;
