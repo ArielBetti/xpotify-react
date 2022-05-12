@@ -1,45 +1,51 @@
 import { useEffect, useState } from "react";
 import { useRecoilValueLoadable } from "recoil";
-import { useNavigate, useParams } from "react-router-dom";
-
-// assets
-import logo from "../../assets/spotify-white.svg";
-import returnIcon from "../../assets/return.svg";
-
-// components
-import TrackContainer from "../../components/TrackContainer/trackcontainer";
-import Loader from "../../components/Loader";
+import { useParams } from "react-router-dom";
 
 // recoil: selectors
 import {
-  selectorGetArtistAlbuns,
+  selectorGetArtist,
   selectorGetArtistTracks,
+  selectorGetArtistAlbums,
 } from "../../store/selectors";
 
-// styles
-import "./style.css";
+// assets
+import logo from "../../assets/spotify-white.svg";
+
+// components
+import Loader from "../../components/Loader";
+import ReturnButton from "../../components/ReturnButton";
+import Hero from "../../components/Hero";
+
+// atoms: components
+import * as Atom from "./style";
+import Section from "../../components/Section";
+import AlbumContainer from "../../containers/Albums";
 
 // ::
 const Artist = () => {
-  const navigate = useNavigate();
   const { id } = useParams();
 
   // recoil: loadable
   const tracksLoadable = useRecoilValueLoadable(selectorGetArtistTracks(id));
-  const albunsLoadable = useRecoilValueLoadable(selectorGetArtistAlbuns(id));
+  const artistLoadable = useRecoilValueLoadable(selectorGetArtist(id));
+  const artistAlbumsLoadable = useRecoilValueLoadable(
+    selectorGetArtistAlbums(id)
+  );
 
   // local: states
   const [artist, setArtist] = useState({});
+  const [artistArt, setArtistArt] = useState("");
+  const [albums, setAlbums] = useState([]);
   const [tracks, setTracks] = useState([]);
-  const [albumArt, setAlbumArt] = useState("");
 
   useEffect(() => {
-    if (albunsLoadable.state === "hasValue") {
-      const result = albunsLoadable.contents;
+    if (artistLoadable.state === "hasValue") {
+      const result = artistLoadable.contents;
       setArtist(result);
-      setAlbumArt(result.images[1 || 0 || 2]?.url || logo);
+      setArtistArt(result.images[0 || 1 || 2]?.url || logo);
     }
-  }, [albunsLoadable.state]);
+  }, [artistLoadable.state]);
 
   useEffect(() => {
     if (tracksLoadable.state === "hasValue") {
@@ -48,36 +54,33 @@ const Artist = () => {
     }
   }, [tracksLoadable.state]);
 
+  useEffect(() => {
+    if (artistAlbumsLoadable.state === "hasValue") {
+      const albums = artistAlbumsLoadable.contents.items;
+      setAlbums(albums || []);
+    }
+  }, [artistAlbumsLoadable.state]);
+
   if (
-    albunsLoadable.state === "loading" ||
-    tracksLoadable.state === "loading"
+    artistLoadable.state === "loading" ||
+    tracksLoadable.state === "loading" ||
+    artistAlbumsLoadable.state === "loading"
   ) {
     return <Loader />;
   }
 
   return (
-    <div className="SelectContainer">
-      <div onClick={() => navigate(-1)} className="ReturnPage">
-        <img src={returnIcon} />
-        <input type="button" value="Voltar" />
-      </div>
+    <Atom.ContainerArtistPage>
+      <ReturnButton />
+      <Hero title={artist.name} image={artistArt} />
 
-      <header className="AppHeader">
-        <div className="logo">
-          <img src={logo} alt="" />
-          <span>Xpotify</span>
-        </div>
-      </header>
-      <div className="SelectMainContainer">
-        <div className="cardselectcontainer">
-          <img className="imgselect" src={albumArt} alt="Foto do artista" />
-          <h2>{artist.name}</h2>
-        </div>
-      </div>
-      {tracks && tracks.length > 0 && (
+      <Section title="Albums">
+        <AlbumContainer albums={albums} />
+      </Section>
+      {/* {tracks && tracks.length > 0 && (
         <TrackContainer tracks={tracks}></TrackContainer>
-      )}
-    </div>
+      )} */}
+    </Atom.ContainerArtistPage>
   );
 };
 
