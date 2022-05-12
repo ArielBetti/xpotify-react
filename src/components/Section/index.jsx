@@ -1,4 +1,4 @@
-import { memo } from "react";
+import { useMemo } from "react";
 
 // typography
 import * as Typography from "../../Typography";
@@ -15,4 +15,4 @@ const Section = ({ children, title }) => {
   );
 };
 
-export default memo(Section);
+export default Section;

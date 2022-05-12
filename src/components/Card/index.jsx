@@ -11,6 +11,7 @@ const Card = ({
   description,
   ariaLabel,
   marginGap,
+  type,
 }) => {
   return (
     <Atom.CardContainer
@@ -19,10 +20,10 @@ const Card = ({
       marginGap={marginGap}
     >
       <Atom.CardImageContainer>
-        <Atom.CardImage src={image} alt={ariaLabel} />
+        <Atom.CardImage type={type || "artist"} src={image} alt={ariaLabel} />
       </Atom.CardImageContainer>
       <Atom.TextsContainer>
-        <Typography.ParagraphBold>{title}</Typography.ParagraphBold>
+        <Atom.CardTitle>{title}</Atom.CardTitle>
         <Typography.Paragraph>{description}</Typography.Paragraph>
       </Atom.TextsContainer>
     </Atom.CardContainer>
