@@ -1,4 +1,21 @@
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    ::-webkit-scrollbar-track {
+	    background-color: ${(props) => `${props.theme?.colors?.neutral[2]}E6`};
+	    border-radius: 10px;
+    }
+    ::-webkit-scrollbar {
+	    width: 3px;
+	    background-color: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      border-radius: 15px;
+      background-color: ${(props) => props.theme?.colors.contrast};
+    }
+  }
+`;
 
 export const AppBaseUI = styled.div`
   font-family: "Montserrat", sans-serif;
