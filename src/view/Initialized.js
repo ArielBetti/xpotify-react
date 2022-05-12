@@ -27,6 +27,7 @@ const Initialized = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <Atom.GlobalStyle />
       <XpotifyProvider>
         <Atom.AppBaseUI>
           <Container>

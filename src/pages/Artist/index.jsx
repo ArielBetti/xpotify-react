@@ -19,7 +19,6 @@ import Hero from "../../components/Hero";
 
 // atoms: components
 import * as Atom from "./style";
-import Section from "../../components/Section";
 import AlbumContainer from "../../containers/Albums";
 
 // ::
@@ -73,10 +72,7 @@ const Artist = () => {
     <Atom.ContainerArtistPage>
       <ReturnButton />
       <Hero title={artist.name} image={artistArt} />
-
-      <Section title="Albums">
-        <AlbumContainer albums={albums} />
-      </Section>
+      <AlbumContainer albums={albums} />
       {/* {tracks && tracks.length > 0 && (
         <TrackContainer tracks={tracks}></TrackContainer>
       )} */}

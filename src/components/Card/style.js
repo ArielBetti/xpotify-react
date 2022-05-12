@@ -53,11 +53,12 @@ export const CardImage = styled.img`
 `;
 
 export const CardTitle = styled(ParagraphBold)`
-  width: 180px;
+  width: 170px;
   overflow: hidden;
   display: inline-block;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding-bottom: 5px;
 `;
 
 export const TextsContainer = styled.div`
