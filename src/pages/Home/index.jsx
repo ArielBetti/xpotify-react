@@ -1,21 +1,20 @@
-import { useEffect, useMemo } from "react";
-import { useRecoilValueLoadable, useRecoilState, useRecoilValue } from "recoil";
+import { useEffect } from "react";
+import { useRecoilValueLoadable, useRecoilState } from "recoil";
 
 // recoil: selectors
 import { selectorGetSearchList } from "../../store/selectors";
 
 // recoil: atoms
-import { atomAlbums, atomArtist, atomToken, atomTracks } from "../../store/atoms";
+import { atomAlbums, atomArtist, atomTracks } from "../../store/atoms";
 
 // components
 import Search from "../../components/Search/search";
 import TrackContainer from "../../components/TrackContainer/trackcontainer";
 import ArtistContainer from "../../containers/Artists";
-import AlbumContainer from "../../components/AlbumContainer/albumcontainer";
+import AlbumContainer from "../../containers/Albums";
 
 // atoms: components
 import * as Atom from "./style";
-import Section from "../../components/Section";
 import Empty from "../../components/Empty";
 import spotifyMethods from "../../utils/spotifyMethods";
 
@@ -27,12 +26,7 @@ const Home = () => {
   // recoil: state
   const [tracks, setTracks] = useRecoilState(atomTracks);
   const [albums, setAlbums] = useRecoilState(atomAlbums);
-  const [artist, setArtist] = useRecoilState(atomArtist);
-  const token = useRecoilValue(atomToken);
-
-  useEffect(() => {
-    console.log('ds', token);
-  }, [token]);
+  const [artists, setArtist] = useRecoilState(atomArtist);
 
   useEffect(() => {
     if (searchResultLoadable.state === "hasValue") {
@@ -47,25 +41,23 @@ const Home = () => {
     }
   }, [searchResultLoadable.state]);
 
-  const RenderSearchList = useMemo(() => {
+  const RenderSearchList = () => {
     if (searchResultLoadable.contents) {
       return (
         <Atom.HomeSectionsContainer>
           <TrackContainer />
-          <Section title={artist ? "Artista" : ""}>
-            <ArtistContainer />
-          </Section>
-          <AlbumContainer />
+          <ArtistContainer artists={artists} />
+          <AlbumContainer albums={albums} />
         </Atom.HomeSectionsContainer>
       );
     }
     return <Empty />;
-  }, [searchResultLoadable.contents]);
+  };
 
   return (
     <Atom.HomeContainer>
       <Search />
-      {RenderSearchList}
+      <RenderSearchList />
     </Atom.HomeContainer>
   );
 };
