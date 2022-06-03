@@ -12,6 +12,7 @@ import Search from "../../components/Search/search";
 import TrackContainer from "../../components/TrackContainer/trackcontainer";
 import ArtistContainer from "../../containers/Artists";
 import AlbumContainer from "../../containers/Albums";
+import Tracks from "../../components/Track";
 
 // atoms: components
 import * as Atom from "./style";
@@ -46,6 +47,7 @@ const Home = () => {
       return (
         <Atom.HomeSectionsContainer>
           <TrackContainer />
+          <Tracks tracks={tracks} />
           <ArtistContainer artists={artists} />
           <AlbumContainer albums={albums} />
         </Atom.HomeSectionsContainer>

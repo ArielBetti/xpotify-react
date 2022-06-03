@@ -22,6 +22,7 @@ export const AppBaseUI = styled.div`
   margin: 0;
   padding: 0;
   outline: 0;
+  padding-bottom: 120px;
   box-sizing: border-box;
   min-height: 100vh;
   width: 100%;

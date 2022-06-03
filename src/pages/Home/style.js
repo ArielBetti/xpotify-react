@@ -12,7 +12,6 @@ export const HomeSectionsContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  height: 90%;
+  height: 100%;
   width: 100%;
-  overflow: auto;
 `;

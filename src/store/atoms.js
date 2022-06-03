@@ -26,6 +26,11 @@ export const atomTracks = atom({
   default: undefined,
 });
 
+export const atomTrackList = atom({
+  key: "TrackList",
+  default: [],
+});
+
 export const atomArtist = atom({
   key: "Artists",
   default: undefined,
