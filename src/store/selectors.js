@@ -1,3 +1,4 @@
+import { usePlayerDevice } from "react-spotify-web-playback-sdk";
 import { selector, selectorFamily } from "recoil";
 
 // requester
@@ -123,4 +124,25 @@ export const selectorGetRefreshToken = selector({
 
     return data;
   },
+});
+
+export const selectorSetSoundTrack = selectorFamily({
+  key: "SetSoundTrack",
+  get:
+    (trackUri) =>
+    async ({ get }) => {
+      const token = get(selectorGetToken);
+      const device = usePlayerDevice();
+
+      if (device === null || !trackUri) return null;
+
+      const { data } = await requester({
+        Authorization: token,
+      }).put(
+        `me/player/play?device_id=${device?.device_id}`,
+        JSON.stringify({ uris: [trackUri] })
+      );
+
+      return data;
+    },
 });

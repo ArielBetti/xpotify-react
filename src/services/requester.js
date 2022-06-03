@@ -27,8 +27,7 @@ export const requester = (config, contentType) => {
     (error) => {
       console.log('error', error);
       if (error?.response?.status === 401) {
-        console.log('deu aqui')
-        getNewToken();
+        window.location.href = '/'
       }
     }
   );

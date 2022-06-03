@@ -17,6 +17,7 @@
     "react-loader-spinner": "^6.0.0-0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^5.0.1",
+    "react-spotify-web-playback-sdk": "^3.0.1",
     "recoil": "^0.7.3-alpha.1",
     "request": "~2.34.0",
     "styled-components": "^5.3.5",
