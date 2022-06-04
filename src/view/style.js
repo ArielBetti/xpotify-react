@@ -29,4 +29,7 @@ export const AppBaseUI = styled.div`
   -webkit-font-smoothing: antialiased !important;
   background-color: ${(props) => props.theme?.colors?.background};
   transition: background-color ${(props) => props.theme?.transitions[1]};
+  @media (max-width: ${(props) => props.theme?.breakpoints.sm}) {
+    padding-bottom: 200px;
+  }
 `;

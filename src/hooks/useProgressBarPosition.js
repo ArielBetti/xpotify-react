@@ -10,14 +10,14 @@ const useProgressBarPosition = ({ position, hasPaused, duration }) => {
   useEffect(() => {
     if (!hasPaused) {
       const interval = setInterval(() => {
-        setCurrentPosition((progressBar += 312));
+        setCurrentPosition((progressBar += 300));
       }, 300);
 
       return () => clearInterval(interval);
     }
   }, [hasPaused, position]);
 
-  return [currentPosition];
+  return [currentPosition, positionRef];
 };
 
 export { useProgressBarPosition };
