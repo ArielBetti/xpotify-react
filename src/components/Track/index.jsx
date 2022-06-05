@@ -1,46 +1,67 @@
-import { memo, useEffect } from "react";
+import { useEffect, memo } from "react";
+import { MdPlayArrow, MdPause } from "react-icons/md";
 import {
-  useRecoilState,
-  useRecoilValueLoadable,
-  useSetRecoilState,
-} from "recoil";
+  usePlaybackState,
+  useSpotifyPlayer,
+} from "react-spotify-web-playback-sdk";
+import { useRecoilValue } from "recoil";
+import { useTheme } from "styled-components";
 
-// recoil: atoms
-import { atomCurrentTrack, atomTrackList } from "../../store/atoms";
-import { atomHashTrackList } from "../../store/atomsHash";
+// atoms: recoil
+import { atomCurrentTrack } from "../../store/atoms";
 
-// recoil: selectors
-import { selectorSetSoundTrack } from "../../store/selectors";
+// atoms: components
+import * as Atom from "./style";
 
-const track = ({ tracks }) => {
+const Track = ({ track, handleChangeTrack, trackArt }) => {
+  const theme = useTheme();
+  const player = useSpotifyPlayer();
+  const playbackState = usePlaybackState();
+
   // recoil: states
-  const [hashTrackList, setHashTrackList] = useRecoilState(atomHashTrackList);
-  const [trackList, setTrackList] = useRecoilState(atomTrackList);
-  const setCurrentTrack = useSetRecoilState(atomCurrentTrack);
+  const currentTrack = useRecoilValue(atomCurrentTrack) || "";
 
-  // recoil: loadable
-  const playTrackLoadable = useRecoilValueLoadable(selectorSetSoundTrack);
+  const onChangeTrack = (trackUri) => {
+    if (currentTrack === track?.uri && playbackState?.paused) {
+      return player.resume();
+    }
+    if (currentTrack === track?.uri && !playbackState?.paused) {
+      return player.pause();
+    }
 
-  const handleChangeTrack = (trackUri) => {
-    setTrackList(trackUri);
-    setHashTrackList(hashTrackList + 1);
+    handleChangeTrack(trackUri);
   };
 
-  useEffect(() => {
-    if (playTrackLoadable.state === "hasValue") {
-      setCurrentTrack(trackList);
-    }
-  }, [playTrackLoadable.state]);
-
-  if (!tracks || tracks.length === 0) return null;
-
   return (
-    <ul>
-      {tracks.map((track) => (
-        <li onClick={() => handleChangeTrack(track?.uri)}>{track?.name}</li>
-      ))}
-    </ul>
+    <Atom.TrackCard onDoubleClick={() => handleChangeTrack(track?.uri)}>
+      <Atom.TrackCardImageContainer>
+        <Atom.TrackCardTogglePlayContainer
+          hasCurrent={currentTrack === track?.uri}
+          onClick={() => onChangeTrack(track?.uri)}
+          className="button-play"
+        >
+          {currentTrack === track?.uri && !playbackState?.paused ? (
+            <MdPause size="40px" color={theme?.colors?.contrast} />
+          ) : (
+            <MdPlayArrow size="40px" color={theme?.colors?.contrast} />
+          )}
+        </Atom.TrackCardTogglePlayContainer>
+        <Atom.TrackCardImage
+          src={track?.album?.images[0 || 1 || 2].url || trackArt}
+          alt="Album art"
+        />
+      </Atom.TrackCardImageContainer>
+      <Atom.TrackCardInfosContainer>
+        <Atom.TrackCardName>{track?.name}</Atom.TrackCardName>
+        <Atom.TrackCardArtists>
+          {track?.artists
+            ?.map((artist) => artist?.name)
+            .toString()
+            .replaceAll(",", ", ")}
+        </Atom.TrackCardArtists>
+      </Atom.TrackCardInfosContainer>
+    </Atom.TrackCard>
   );
 };
 
-export default memo(track);
+export default memo(Track);

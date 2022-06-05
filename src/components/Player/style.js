@@ -121,6 +121,7 @@ export const PlayerInfoTextContainer = styled.div`
 export const PlayerInfoTrackName = styled(Paragraph)`
   transition: linear 2.5s transform;
   width: auto;
+  cursor: default;
   :hover {
     ${(props) =>
       props.trackNameTextLength > 20 &&
@@ -133,6 +134,7 @@ export const PlayerInfoTrackName = styled(Paragraph)`
 export const PlayerInfoTrackArtists = styled(SmallText)`
   transition: linear 2.5s transform;
   width: auto;
+  cursor: default;
   :hover {
     ${(props) =>
       props.trackArtistTextLength > 20 &&
