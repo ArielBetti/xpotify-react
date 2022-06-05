@@ -3,12 +3,7 @@ import { useRecoilValueLoadable } from "recoil";
 import { useParams } from "react-router-dom";
 
 // recoil: selectors
-import {
-  selectorGetArtist,
-  selectorGetArtistTracks,
-  selectorGetArtistAlbums,
-  selectorGetAlbum,
-} from "../../store/selectors";
+import { selectorGetAlbum } from "../../store/selectors";
 
 // assets
 import logo from "../../assets/spotify-white.svg";
@@ -19,7 +14,6 @@ import ReturnButton from "../../components/ReturnButton";
 import Hero from "../../components/Hero";
 
 // containers
-import AlbumContainer from "../../containers/Albums";
 import TrackContainer from "../../containers/Tracks";
 
 // atoms: components
@@ -58,7 +52,6 @@ const Artist = () => {
       <ReturnButton />
       <Hero title={album?.name} image={albumArt || ""} />
       <TrackContainer trackArt={albumArt} tracks={tracks} />
-      {/* <AlbumContainer albums={albums} />  */}
     </Atom.ContainerArtistPage>
   );
 };

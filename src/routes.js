@@ -6,7 +6,7 @@ import Header from "./components/Header/header";
 import MySpotifyPlayer from "./components/Player";
 
 // pages
-import { Album, Artista, Home, Login, LoadUser } from "./pages";
+import { Album, Artista, Home, Login, LoadUser, Playlist } from "./pages";
 
 const AppRouter = () => {
   return (
@@ -19,6 +19,9 @@ const AppRouter = () => {
         </Route>
         <Route path="/autenticando" element={<LoadUser />} />
         <Route path="/artista" element={<Artista />}>
+          <Route path=":id" />
+        </Route>
+        <Route path="/playlist" element={<Playlist />}>
           <Route path=":id" />
         </Route>
         <Route path="/home" element={<Home />} />

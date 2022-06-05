@@ -142,6 +142,23 @@ export const selectorGetAlbum = selectorFamily({
     },
 });
 
+export const selectorGetPlaylist = selectorFamily({
+  key: "GetPlaylist",
+  get:
+    (id) =>
+    async ({ get }) => {
+      const token = get(selectorGetToken);
+
+      if (!id) return null;
+
+      const { data } = await requester({
+        Authorization: token,
+      }).get(`/playlists/${id}`);
+
+      return data;
+    },
+});
+
 export const selectorGetRefreshToken = selector({
   key: "GetRefreshToken",
   get: async ({ get }) => {
