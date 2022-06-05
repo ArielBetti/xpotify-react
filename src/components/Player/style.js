@@ -40,7 +40,6 @@ export const PlayerProgressBarTimer = styled(SmallText)`
 
 export const PlayerProgressBarSlider = styled.input`
   -webkit-appearance: none;
-  transition: linear 0.5s background-size;
   appearance: none;
   width: 100%;
   border-radius: 10px;
@@ -61,6 +60,10 @@ export const PlayerProgressBarSlider = styled.input`
       background-color: ${(props) => props?.theme?.colors?.contrast};
       border: 2px solid ${(props) => props?.theme?.colors?.text?.dark};
     }
+    ::-moz-range-thumb {
+      background-color: ${(props) => props?.theme?.colors?.contrast};
+      border: 2px solid ${(props) => props?.theme?.colors?.text?.dark};
+    }
   }
   ::-webkit-slider-thumb {
     appearance: none;
@@ -71,11 +74,19 @@ export const PlayerProgressBarSlider = styled.input`
     border-radius: 10px;
     top: -4px;
     left: ${(props) => `${props?.progressBarSize - 1}%`};
-    transition: linear 0.5s left;
     cursor: grabbing;
   }
-  ::-webkit-fill-lower {
-    background: blue;
+  ::-moz-range-thumb {
+    border: none;
+    appearance: none;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    background: transparent;
+    border-radius: 10px;
+    top: -4px;
+    left: ${(props) => `${props?.progressBarSize - 1}%`};
+    cursor: grabbing;
   }
 `;
 

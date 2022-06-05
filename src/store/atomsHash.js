@@ -24,3 +24,8 @@ export const atomHashGlobalSearch = atom({
   key: "HashGlobalSearch",
   default: 0,
 });
+
+export const atomHashTrackList = atom({
+  key: "HasTrackList",
+  default: 0,
+})

@@ -3,6 +3,11 @@ import { atom } from "recoil";
 // storage: localStorage
 import { localStorageEffect } from "../utils/localStorageEffect";
 
+export const atomDevice = atom({
+  key: "Device",
+  default: undefined,
+});
+
 export const atomToken = atom({
   key: "Token",
   default: undefined,
@@ -23,6 +28,11 @@ export const atomUser = atom({
 
 export const atomTracks = atom({
   key: "Tracks",
+  default: undefined,
+});
+
+export const atomCurrentTrack = atom({
+  key: "CurrentTrack",
   default: undefined,
 });
 

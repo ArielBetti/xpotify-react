@@ -5,10 +5,21 @@ import { selector, selectorFamily } from "recoil";
 import { requester } from "../services/requester";
 
 // atoms
-import { atomGlobalSearch, atomRefreshToken, atomToken } from "./atoms";
+import {
+  atomCurrentTrack,
+  atomDevice,
+  atomGlobalSearch,
+  atomRefreshToken,
+  atomToken,
+  atomTrackList,
+} from "./atoms";
 
 // atoms: hash
-import { atomHashGlobalSearch, atomHashRefreshToken } from "./atomsHash";
+import {
+  atomHashGlobalSearch,
+  atomHashRefreshToken,
+  atomHashTrackList,
+} from "./atomsHash";
 
 // constants
 import {
@@ -126,23 +137,26 @@ export const selectorGetRefreshToken = selector({
   },
 });
 
-export const selectorSetSoundTrack = selectorFamily({
+export const selectorSetSoundTrack = selector({
   key: "SetSoundTrack",
-  get:
-    (trackUri) =>
-    async ({ get }) => {
-      const token = get(selectorGetToken);
-      const device = usePlayerDevice();
+  get: async ({ get }) => {
+    const trackUri = get(atomTrackList);
+    const device = get(atomDevice);
+    const token = get(selectorGetToken);
+    const currentTrack = get(atomCurrentTrack);
 
-      if (device === null || !trackUri) return null;
+    get(atomHashTrackList);
 
-      const { data } = await requester({
-        Authorization: token,
-      }).put(
-        `me/player/play?device_id=${device?.device_id}`,
-        JSON.stringify({ uris: [trackUri] })
-      );
+    if (device === null || !trackUri) return null;
+    if (currentTrack === trackUri) return null;
 
-      return data;
-    },
+    const { data } = await requester({
+      Authorization: token,
+    }).put(
+      `me/player/play?device_id=${device?.device_id}`,
+      JSON.stringify({ uris: [trackUri] })
+    );
+
+    return data;
+  },
 });
