@@ -125,6 +125,23 @@ export const selectorGetArtistAlbums = selectorFamily({
     },
 });
 
+export const selectorGetAlbum = selectorFamily({
+  key: "GetAlbum",
+  get:
+    (id) =>
+    async ({ get }) => {
+      const token = get(selectorGetToken);
+
+      if (!id) return null;
+
+      const { data } = await requester({
+        Authorization: token,
+      }).get(`/albums/${id}`);
+
+      return data;
+    },
+});
+
 export const selectorGetRefreshToken = selector({
   key: "GetRefreshToken",
   get: async ({ get }) => {
@@ -155,6 +172,30 @@ export const selectorSetSoundTrack = selector({
     }).put(
       `me/player/play?device_id=${device?.device_id}`,
       JSON.stringify({ uris: [trackUri] })
+    );
+
+    return data;
+  },
+});
+
+export const selectorSetTrackCollection = selector({
+  key: "SetTrackCollection",
+  get: async ({ get }) => {
+    const trackUri = get(atomTrackList);
+    const device = get(atomDevice);
+    const token = get(selectorGetToken);
+    const currentTrack = get(atomCurrentTrack);
+
+    get(atomHashTrackList);
+
+    if (device === null || !trackUri) return null;
+    if (currentTrack === trackUri) return null;
+
+    const { data } = await requester({
+      Authorization: token,
+    }).put(
+      `me/player/play?device_id=${device?.device_id}`,
+      JSON.stringify({ context_uri: trackUri })
     );
 
     return data;
