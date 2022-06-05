@@ -1,7 +1,27 @@
 import styled from "styled-components";
 import { ParagraphBold } from "../../Typography";
 
+export const CardTogglePlayButton = styled.div`
+  position: absolute;
+  background: ${(props) => props?.theme?.colors?.contrast};
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  visibility: ${(props) => (props?.hasCurrent ? "visible" : "hidden")};
+  left: 10px;
+  top: 10px;
+
+  @media (max-width: ${(props) => props.theme?.breakpoints.md}) {
+    visibility: visible;
+  }
+`;
+
 export const CardContainer = styled.div`
+  position: relative;
   background-color: ${(props) => props.theme?.colors?.neutral[1]};
   display: flex;
   align-items: flex-start;
@@ -23,14 +43,26 @@ export const CardContainer = styled.div`
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.4);
     transform: translateY(-5px);
     border: 2px solid ${(props) => props.theme?.colors?.contrast};
+    .button-play {
+      visibility: initial;
+    }
   }
 
+  @media (max-width: ${(props) => props.theme?.breakpoints.sm}) {
+    max-width: 100%;
+    margin: 0px;
+  }
+`;
+
+export const CardInfoContainer = styled.div`
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
   @media (max-width: ${(props) => props.theme?.breakpoints.sm}) {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    max-width: 100%;
-    margin: 0px;
   }
 `;
 

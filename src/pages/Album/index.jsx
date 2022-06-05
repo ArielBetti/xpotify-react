@@ -41,7 +41,6 @@ const Artist = () => {
   useEffect(() => {
     if (albumLoadable.state === "hasValue") {
       const result = albumLoadable.contents;
-      console.log(result);
       if (result?.tracks?.items?.length > 0) {
         setTracks(result?.tracks?.items);
       }

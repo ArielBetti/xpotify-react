@@ -18,6 +18,7 @@ const Album = ({ album }) => {
       title={album?.name}
       type="album"
       description={album?.type}
+      collectionUri={album?.uri}
     />
   );
 };

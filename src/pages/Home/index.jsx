@@ -47,7 +47,6 @@ const Home = () => {
   useEffect(() => {
     if (searchResultLoadable.state === "hasValue") {
       const selected = searchResultLoadable.contents;
-
       setArtist(selected?.artists?.items);
       setAlbums(selected?.albums?.items);
       setTracks(selected?.tracks?.items);
