@@ -1,5 +1,5 @@
 // components
-import Artist from "../../components/Artist/artist";
+import Artist from "../../components/Artist";
 import Section from "../../components/Section";
 
 // ::

@@ -31,8 +31,18 @@ export const atomTracks = atom({
   default: undefined,
 });
 
+export const atomPlaylists = atom({
+  key: "Playlists",
+  default: undefined,
+});
+
 export const atomCurrentTrack = atom({
   key: "CurrentTrack",
+  default: undefined,
+});
+
+export const atomCurrentTrackId = atom({
+  key: "CurrentTrackId",
   default: undefined,
 });
 

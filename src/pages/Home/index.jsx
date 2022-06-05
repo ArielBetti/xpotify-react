@@ -13,6 +13,7 @@ import {
   atomAlbums,
   atomArtist,
   atomDevice,
+  atomPlaylists,
   atomTracks,
 } from "../../store/atoms";
 
@@ -29,6 +30,7 @@ import * as Atom from "./style";
 import Empty from "../../components/Empty";
 import spotifyMethods from "../../utils/spotifyMethods";
 import { usePlayerDevice } from "react-spotify-web-playback-sdk";
+import PlaylistContainer from "../../containers/Playlists";
 
 // ::
 const Home = () => {
@@ -39,17 +41,20 @@ const Home = () => {
   const searchResultLoadable = useRecoilValueLoadable(selectorGetSearchList);
 
   // recoil: state
-  const [tracks, setTracks] = useRecoilState(atomTracks);
-  const [albums, setAlbums] = useRecoilState(atomAlbums);
   const [artists, setArtist] = useRecoilState(atomArtist);
+  const [albums, setAlbums] = useRecoilState(atomAlbums);
+  const [tracks, setTracks] = useRecoilState(atomTracks);
+  const [playlists, setPlaylists] = useRecoilState(atomPlaylists);
   const setUserDevice = useSetRecoilState(atomDevice);
 
   useEffect(() => {
     if (searchResultLoadable.state === "hasValue") {
       const selected = searchResultLoadable.contents;
+
       setArtist(selected?.artists?.items);
       setAlbums(selected?.albums?.items);
       setTracks(selected?.tracks?.items);
+      setPlaylists(selected?.playlists?.items);
     }
     if (searchResultLoadable.state === "hasError") {
       spotifyMethods.refreshToken();
@@ -67,6 +72,7 @@ const Home = () => {
           <TrackContainer tracks={tracks} />
           <ArtistContainer artists={artists} />
           <AlbumContainer albums={albums} />
+          <PlaylistContainer playlists={playlists} />
         </Atom.HomeSectionsContainer>
       );
     }
