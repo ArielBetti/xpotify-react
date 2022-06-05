@@ -15,6 +15,7 @@ const Artist = ({ artist }) => {
       ariaLabel="Foto do artista"
       title={artist?.name}
       description={artist?.type}
+      collectionUri={artist?.uri}
     />
   );
 };

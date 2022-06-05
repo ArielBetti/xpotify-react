@@ -1,8 +1,8 @@
 // typography
-import * as Typography from '../../Typography';
+import * as Typography from "../../Typography";
 
 // atoms: components
-import * as Atom from './style';
+import * as Atom from "./style";
 
 const Hero = ({ title, image }) => {
   return (
