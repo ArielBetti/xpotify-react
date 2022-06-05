@@ -16,12 +16,13 @@ import {
   atomTracks,
 } from "../../store/atoms";
 
-// components
-import Search from "../../components/Search/search";
-import TrackContainer from "../../components/TrackContainer/trackcontainer";
+// containers
 import ArtistContainer from "../../containers/Artists";
 import AlbumContainer from "../../containers/Albums";
-import Tracks from "../../components/Track";
+import TrackContainer from "../../containers/Tracks";
+
+// components
+import Search from "../../components/Search/search";
 
 // atoms: components
 import * as Atom from "./style";
@@ -64,8 +65,7 @@ const Home = () => {
     if (searchResultLoadable.contents) {
       return (
         <Atom.HomeSectionsContainer>
-          <TrackContainer />
-          <Tracks tracks={tracks} />
+          <TrackContainer tracks={tracks} />
           <ArtistContainer artists={artists} />
           <AlbumContainer albums={albums} />
         </Atom.HomeSectionsContainer>

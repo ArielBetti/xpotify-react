@@ -17,9 +17,12 @@ import Loader from "../../components/Loader";
 import ReturnButton from "../../components/ReturnButton";
 import Hero from "../../components/Hero";
 
+// containers
+import AlbumContainer from "../../containers/Albums";
+import TrackContainer from "../../containers/Tracks";
+
 // atoms: components
 import * as Atom from "./style";
-import AlbumContainer from "../../containers/Albums";
 
 // ::
 const Artist = () => {
@@ -72,10 +75,8 @@ const Artist = () => {
     <Atom.ContainerArtistPage>
       <ReturnButton />
       <Hero title={artist.name} image={artistArt} />
+      <TrackContainer tracks={tracks} />
       <AlbumContainer albums={albums} />
-      {/* {tracks && tracks.length > 0 && (
-        <TrackContainer tracks={tracks}></TrackContainer>
-      )} */}
     </Atom.ContainerArtistPage>
   );
 };

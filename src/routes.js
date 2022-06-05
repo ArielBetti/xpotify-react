@@ -14,11 +14,14 @@ const AppRouter = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/album" element={<Album />}>
+          <Route path=":id" />
+        </Route>
         <Route path="/autenticando" element={<LoadUser />} />
-        <Route path="/home" element={<Home />} />
         <Route path="/artista" element={<Artista />}>
           <Route path=":id" />
         </Route>
+        <Route path="/home" element={<Home />} />
       </Routes>
       <MySpotifyPlayer />
     </>
