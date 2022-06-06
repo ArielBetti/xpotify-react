@@ -21,10 +21,12 @@ const Login = () => {
         <Logo size="70px" />
         <h1 className="TitleLogin">Xpotify</h1>
       </div>
-      {/* <a className="LoginBtn" href='https://xpotify-auth.herokuapp.com/login' >Login com Spotify </a>  */}
-      <a className="LoginBtn" href="http://localhost:8080/login">
+      <a className="LoginBtn" href="https://xpotify-auth.herokuapp.com/login">
         Login com Spotify{" "}
       </a>
+      {/* <a className="LoginBtn" href="http://localhost:8080/login">
+        Login com Spotify{" "}
+      </a> */}
     </div>
   );
 };
