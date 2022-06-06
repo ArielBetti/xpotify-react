@@ -5,9 +5,6 @@ import { useParams } from "react-router-dom";
 // recoil: selectors
 import { selectorGetAlbum } from "../../store/selectors";
 
-// assets
-import logo from "../../assets/spotify-white.svg";
-
 // components
 import Loader from "../../components/Loader";
 import ReturnButton from "../../components/ReturnButton";
@@ -39,7 +36,7 @@ const Artist = () => {
         setTracks(result?.tracks?.items);
       }
       setAlbum(result);
-      setAlbumArt(result.images[0 || 1 || 2]?.url || logo);
+      setAlbumArt(result.images[0 || 1 || 2]?.url);
     }
   }, [albumLoadable.state]);
 

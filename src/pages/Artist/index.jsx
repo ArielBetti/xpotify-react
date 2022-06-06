@@ -9,9 +9,6 @@ import {
   selectorGetArtistAlbums,
 } from "../../store/selectors";
 
-// assets
-import logo from "../../assets/spotify-white.svg";
-
 // components
 import Loader from "../../components/Loader";
 import ReturnButton from "../../components/ReturnButton";
@@ -45,7 +42,7 @@ const Artist = () => {
     if (artistLoadable.state === "hasValue") {
       const result = artistLoadable.contents;
       setArtist(result);
-      setArtistArt(result.images[0 || 1 || 2]?.url || logo);
+      setArtistArt(result.images[0 || 1 || 2]?.url);
     }
   }, [artistLoadable.state]);
 

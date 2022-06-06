@@ -8,4 +8,7 @@ export const SvgContainer = styled.svg`
   @media (max-width: ${(props) => props.theme?.breakpoints.sm}) {
     height: 300px;
   }
+  @media (max-width: ${(props) => props.theme?.breakpoints.xsm}) {
+    height: 180px;
+  }
 `;

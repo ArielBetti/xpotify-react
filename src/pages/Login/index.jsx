@@ -2,7 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react/cjs/react.development";
 import { useRecoilValue } from "recoil";
-import Logo from "../../assets/spotify.svg";
+import Logo from "../../assets/Logo";
+
 import { atomUser } from "../../store/atoms";
 import "./style.css";
 
@@ -18,7 +19,7 @@ const Login = () => {
   return (
     <div className="AppLogin">
       <div className="logo">
-        <img src={Logo} alt="Xpotify logo" />
+        <Logo size="70px" />
         <h1 className="TitleLogin">Xpotify</h1>
       </div>
       {/* <a className="LoginBtn" href='https://xpotify-auth.herokuapp.com/login' >Login com Spotify </a>  */}
