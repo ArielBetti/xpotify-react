@@ -21,7 +21,9 @@ const Logout = () => {
 
   // logout function
   const logoutSection = () => {
-    player.disconnect();
+    if (player) {
+      player.disconnect();
+    }
     resetUser();
     resetToken();
     resetRefreshToken();
