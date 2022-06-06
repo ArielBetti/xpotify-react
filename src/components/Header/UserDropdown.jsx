@@ -45,30 +45,33 @@ const UserDropdown = () => {
   }, [onClickOutside]);
 
   return (
-    <>
-      <Atom.UserDropDownContainer
-        ref={dropdownRef}
-        hasOpen={toggleOpenDropdown}
-        onClick={() => handleToggleDropdown()}
-      >
-        <Atom.UserProfilePic src={user?.images[0]?.url} alt="" />
-        <Typography.Paragraph>{user?.display_name}</Typography.Paragraph>
-        <MdArrowDropDown
-          className="dropdown-arrow"
-          size="20px"
-          color={theme?.colors?.text?.contrast}
-        />
-        <Atom.UserDropDownCollapse
-          className="dropdown-open"
+
+      <Atom.UserDropDownAnchor>
+        <Atom.UserDropDownContainer
+          ref={dropdownRef}
           hasOpen={toggleOpenDropdown}
+          onClick={() => handleToggleDropdown()}
         >
-          <Atom.UserDropDownItem onClick={() => navigateTo("/sair")}>
-            <MdExitToApp size="15px" color={theme?.colors?.contrast} />
-            <Typography.Paragraph>Sair</Typography.Paragraph>
-          </Atom.UserDropDownItem>
-        </Atom.UserDropDownCollapse>
-      </Atom.UserDropDownContainer>
-    </>
+          <Atom.UserProfilePic src={user?.images[0]?.url} alt="" />
+          <Atom.UserDropDownUserName>
+            {user?.display_name}
+          </Atom.UserDropDownUserName>
+          <MdArrowDropDown
+            className="dropdown-arrow"
+            size="20px"
+            color={theme?.colors?.text?.contrast}
+          />
+          <Atom.UserDropDownCollapse
+            className="dropdown-open"
+            hasOpen={toggleOpenDropdown}
+          >
+            <Atom.UserDropDownItem onClick={() => navigateTo("/sair")}>
+              <MdExitToApp size="15px" color={theme?.colors?.contrast} />
+              <Typography.Paragraph>Sair</Typography.Paragraph>
+            </Atom.UserDropDownItem>
+          </Atom.UserDropDownCollapse>
+        </Atom.UserDropDownContainer>
+      </Atom.UserDropDownAnchor>
   );
 };
 
