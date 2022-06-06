@@ -5,9 +5,6 @@ import { useParams } from "react-router-dom";
 // recoil: selectors
 import { selectorGetPlaylist } from "../../store/selectors";
 
-// assets
-import logo from "../../assets/spotify-white.svg";
-
 // components
 import Loader from "../../components/Loader";
 import ReturnButton from "../../components/ReturnButton";
@@ -39,15 +36,13 @@ const Playlist = () => {
         setTracks(trackList);
       }
       setPlaylist(result);
-      setPlaylistArt(result.images[0]?.url || logo);
+      setPlaylistArt(result.images[0]?.url);
     }
   }, [playlistLoadable.state]);
 
   if (playlistLoadable.state === "loading") {
     return <Loader />;
   }
-
-  console.log(playlist);
 
   return (
     <Atom.ContainerArtistPage>

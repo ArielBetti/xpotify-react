@@ -26,6 +26,7 @@ import { atomHashTrackList } from "../../store/atomsHash";
 // typography
 import * as Typography from "../../Typography";
 import { selectorSetTrackCollection } from "../../store/selectors";
+import Logo from "../../assets/Logo";
 
 const Card = ({
   actionClick,
@@ -91,11 +92,19 @@ const Card = ({
       )}
       <Atom.CardInfoContainer onClick={actionClick} hasAction={actionClick}>
         <Atom.CardImageContainer>
-          <Atom.CardImage type={type || "artist"} src={image} alt={ariaLabel} />
+          {image ? (
+            <Atom.CardImage
+              type={type || "artist"}
+              src={image}
+              alt={ariaLabel}
+            />
+          ) : (
+            <Logo size="8em" />
+          )}
         </Atom.CardImageContainer>
         <Atom.TextsContainer>
           <Atom.CardTitle>{title}</Atom.CardTitle>
-          <Typography.Paragraph>{description}</Typography.Paragraph>
+          <Atom.CardDescription>{description}</Atom.CardDescription>
         </Atom.TextsContainer>
       </Atom.CardInfoContainer>
     </Atom.CardContainer>

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/spotify-white.svg";
+import Logo from "../../assets/Logo";
 
 // components
 import Card from "../Card";
@@ -11,7 +11,7 @@ const Artist = ({ artist }) => {
     <Card
       actionClick={() => navigate(`/artista/${artist.id}`)}
       marginGap="10px 10px 10px 3px"
-      image={artist?.images[2]?.url || artist?.images[0]?.url || logo}
+      image={artist?.images[2]?.url || artist?.images[0]?.url}
       ariaLabel="Foto do artista"
       title={artist?.name}
       description={artist?.type}
