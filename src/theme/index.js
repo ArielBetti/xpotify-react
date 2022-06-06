@@ -30,6 +30,7 @@ export const light = {
     2: "0.25",
   },
   breakpoints: {
+    xsm: "360px",
     sm: "576px",
     md: "768px",
     lg: "992px",
@@ -69,6 +70,7 @@ export const dark = {
     2: "0.25",
   },
   breakpoints: {
+    xsm: "360px",
     sm: "576px",
     md: "768px",
     lg: "992px",
