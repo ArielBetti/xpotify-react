@@ -68,6 +68,6 @@ export const atomGlobalSearch = atom({
 
 export const atomDarkTheme = atom({
   key: "DarkTheme",
-  default: false,
+  default: true,
   effects: [localStorageEffect("dark_mode")],
 });
