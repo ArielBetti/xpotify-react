@@ -20,7 +20,6 @@ const Initialized = () => {
   // recoil: state
   const prefersDarkMode = useRecoilValue(atomDarkTheme);
   const token = useRecoilValue(atomToken);
-  const user = useRecoilValue(atomUser);
 
   const getOAuthToken = useCallback(
     (callback) => callback(token?.replace("Bearer", "").trim()),
@@ -36,22 +35,12 @@ const Initialized = () => {
   return (
     <ThemeProvider theme={theme}>
       <Atom.GlobalStyle />
-      {user ? (
-        <WebPlaybackSDK
-          initialDeviceName="Xpotify Web"
-          getOAuthToken={getOAuthToken}
-          volume={0.5}
-          connectOnInitialized={true}
-        >
-          <XpotifyProvider>
-            <Atom.AppBaseUI>
-              <Container>
-                <AppRouter />
-              </Container>
-            </Atom.AppBaseUI>
-          </XpotifyProvider>
-        </WebPlaybackSDK>
-      ) : (
+      <WebPlaybackSDK
+        initialDeviceName="Xpotify Web"
+        getOAuthToken={getOAuthToken}
+        volume={0.5}
+        connectOnInitialized={true}
+      >
         <XpotifyProvider>
           <Atom.AppBaseUI>
             <Container>
@@ -59,7 +48,7 @@ const Initialized = () => {
             </Container>
           </Atom.AppBaseUI>
         </XpotifyProvider>
-      )}
+      </WebPlaybackSDK>
     </ThemeProvider>
   );
 };
