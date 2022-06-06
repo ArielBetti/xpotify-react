@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState, useContext } from "react";
-import { useRecoilState } from "recoil";
-import { atomToken } from "../store/atoms";
+import { useSpotifyPlayer } from "react-spotify-web-playback-sdk";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { atomDevice, atomToken } from "../store/atoms";
 import spotifyMethods from "../utils/spotifyMethods";
 
 export const XpotifyContext = createContext({});
@@ -9,6 +10,8 @@ export const getNewToken = () => spotifyMethods.refreshToken();
 export const XpotifyProvider = ({ children }) => {
   const [token, setToken] = useRecoilState(atomToken);
   const [newToken, setNewToken] = useState("");
+  const userDevice = useRecoilValue(atomDevice);
+  const player = useSpotifyPlayer();
 
   // constants
   const TOKEN_IN_8_MIN = 480000;
@@ -26,6 +29,12 @@ export const XpotifyProvider = ({ children }) => {
   useEffect(() => {
     setInterval(() => refreshTokenValue(), TOKEN_IN_8_MIN);
   }, [token]);
+
+  useEffect(() => {
+    if (userDevice?.status === "ready") {
+      player.connect();
+    }
+  }, [userDevice]);
 
   return (
     <XpotifyContext.Provider value={{ refreshTokenValue }}>
