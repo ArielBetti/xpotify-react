@@ -1,5 +1,14 @@
-import { createContext, useEffect, useState, useContext } from "react";
-import { useSpotifyPlayer } from "react-spotify-web-playback-sdk";
+import {
+  createContext,
+  useEffect,
+  useState,
+  useContext,
+  useCallback,
+} from "react";
+import {
+  useSpotifyPlayer,
+  usePlaybackState,
+} from "react-spotify-web-playback-sdk";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { atomDevice, atomToken } from "../store/atoms";
 import spotifyMethods from "../utils/spotifyMethods";
@@ -8,10 +17,14 @@ export const XpotifyContext = createContext({});
 export const getNewToken = () => spotifyMethods.refreshToken();
 
 export const XpotifyProvider = ({ children }) => {
-  const [token, setToken] = useRecoilState(atomToken);
-  const [newToken, setNewToken] = useState("");
-  const userDevice = useRecoilValue(atomDevice);
   const player = useSpotifyPlayer();
+  const playbackState = usePlaybackState();
+
+  // local: states
+  const [newToken, setNewToken] = useState("");
+
+  const [token, setToken] = useRecoilState(atomToken);
+  const userDevice = useRecoilValue(atomDevice);
 
   // constants
   const TOKEN_IN_8_MIN = 480000;
@@ -19,6 +32,11 @@ export const XpotifyProvider = ({ children }) => {
   const refreshTokenValue = () => {
     getNewToken().then((newToken) => setNewToken(`Bearer ${newToken}`));
   };
+
+  const getOAuthToken = useCallback(
+    (callback) => callback(token?.replace("Bearer", "").trim()),
+    [token]
+  );
 
   useEffect(() => {
     if (newToken && btoa(newToken)) {
@@ -38,7 +56,18 @@ export const XpotifyProvider = ({ children }) => {
 
   return (
     <XpotifyContext.Provider value={{ refreshTokenValue }}>
-      {children}
+      {playbackState ? (
+        <WebPlaybackSDK
+          initialDeviceName="Xpotify Web"
+          getOAuthToken={getOAuthToken}
+          volume={0.5}
+          connectOnInitialized={true}
+        >
+          {children}
+        </WebPlaybackSDK>
+      ) : (
+        <>{children}</>
+      )}
     </XpotifyContext.Provider>
   );
 };

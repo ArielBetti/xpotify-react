@@ -1,7 +1,6 @@
-import { useMemo, memo, useCallback } from "react";
-import { WebPlaybackSDK } from "react-spotify-web-playback-sdk";
+import { useMemo, memo } from "react";
 import { useRecoilValue } from "recoil";
-import { atomDarkTheme, atomToken } from "../store/atoms";
+import { atomDarkTheme } from "../store/atoms";
 import { ThemeProvider } from "styled-components";
 import { dark, light } from "../theme";
 import AppRouter from "../routes";
@@ -19,12 +18,6 @@ import { XpotifyProvider } from "../context";
 const Initialized = () => {
   // recoil: state
   const prefersDarkMode = useRecoilValue(atomDarkTheme);
-  const token = useRecoilValue(atomToken);
-
-  const getOAuthToken = useCallback(
-    (callback) => callback(token?.replace("Bearer", "").trim()),
-    [token]
-  );
 
   // theme changer
   const theme = useMemo(
@@ -35,20 +28,13 @@ const Initialized = () => {
   return (
     <ThemeProvider theme={theme}>
       <Atom.GlobalStyle />
-      <WebPlaybackSDK
-        initialDeviceName="Xpotify Web"
-        getOAuthToken={getOAuthToken}
-        volume={0.5}
-        connectOnInitialized={true}
-      >
-        <XpotifyProvider>
-          <Atom.AppBaseUI>
-            <Container>
-              <AppRouter />
-            </Container>
-          </Atom.AppBaseUI>
-        </XpotifyProvider>
-      </WebPlaybackSDK>
+      <XpotifyProvider>
+        <Atom.AppBaseUI>
+          <Container>
+            <AppRouter />
+          </Container>
+        </Atom.AppBaseUI>
+      </XpotifyProvider>
     </ThemeProvider>
   );
 };
