@@ -54,6 +54,9 @@ export const TrackCardName = styled(Paragraph)`
   text-overflow: ellipsis;
   padding: 5px;
   max-width: 200px;
+  @media (max-width: ${(props) => props.theme?.breakpoints.xsm}) {
+    max-width: 80px;
+  }
 `;
 
 export const TrackCardArtists = styled(SmallText)`
@@ -62,6 +65,9 @@ export const TrackCardArtists = styled(SmallText)`
   text-overflow: ellipsis;
   padding: 5px;
   max-width: 200px;
+  @media (max-width: ${(props) => props.theme?.breakpoints.xsm}) {
+    max-width: 80px;
+  }
 `;
 
 export const TrackCardImageContainer = styled.div`
