@@ -1,6 +1,7 @@
 import { memo, useEffect, useState } from "react";
-import { useTheme } from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { useTheme } from "styled-components";
 
 // icons
 import { BsSoundwave } from "react-icons/bs";
@@ -12,9 +13,14 @@ import { Container } from "../Container";
 
 // atoms: components
 import * as Atom from "./style";
+import { atomUser } from "../../store/atoms";
+import { usePlaybackState } from "react-spotify-web-playback-sdk";
 
 // ::
 const Header = () => {
+  // recoil: states
+  const user = useRecoilValue(atomUser);
+
   const [scrollValue, setScrollValue] = useState(0);
   const theme = useTheme();
   const navigate = useNavigate();
@@ -38,7 +44,7 @@ const Header = () => {
               Xpotify
             </Atom.NavLogo>
             <Atom.UserSection>
-              <UserDropdown />
+              {user && <UserDropdown />}
               <ToggleTheme />
             </Atom.UserSection>
           </Atom.NavigationExtends>

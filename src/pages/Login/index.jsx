@@ -1,8 +1,20 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react/cjs/react.development";
+import { useRecoilValue } from "recoil";
 import Logo from "../../assets/spotify.svg";
+import { atomUser } from "../../store/atoms";
 import "./style.css";
 
 const Login = () => {
+  const navigateTo = useNavigate();
+
+  const hasUser = useRecoilValue(atomUser);
+
+  useEffect(() => {
+    if (hasUser) navigateTo("/home");
+  }, [hasUser]);
+
   return (
     <div className="AppLogin">
       <div className="logo">
