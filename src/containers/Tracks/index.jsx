@@ -47,6 +47,7 @@ const TrackContainer = ({ tracks, trackArt }) => {
       <Atom.TracksContainer>
         {tracks.map((track) => (
           <Track
+            key={track?.id}
             trackArt={trackArt}
             track={track}
             handleChangeTrack={handleChangeTrack}
