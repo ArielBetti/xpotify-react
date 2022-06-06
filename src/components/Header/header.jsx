@@ -3,27 +3,32 @@ import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { useTheme } from "styled-components";
 
-// icons
-import { BsSoundwave } from "react-icons/bs";
+// hooks
+import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 
 // components
 import ToggleTheme from "../ToggleTheme";
 import UserDropdown from "./UserDropdown";
+import HambuguerMenu from "./HamburguerMenu";
 import { Container } from "../Container";
 
 // atoms: components
 import * as Atom from "./style";
 import { atomUser } from "../../store/atoms";
-import { usePlaybackState } from "react-spotify-web-playback-sdk";
+import Logo from "../../assets/Logo";
 
 // ::
 const Header = () => {
-  // recoil: states
-  const user = useRecoilValue(atomUser);
-
-  const [scrollValue, setScrollValue] = useState(0);
   const theme = useTheme();
   const navigate = useNavigate();
+
+  // local: states
+  const [scrollValue, setScrollValue] = useState(0);
+  const [menuToggle, setMenuToggle] = useState();
+
+  // recoil: states
+  const user = useRecoilValue(atomUser);
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     const onScroll = (e) => {
@@ -34,18 +39,35 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, [scrollValue]);
 
+  useEffect(() => {
+    if (user && width > theme?.breakpoints?.md.replace("px", "")) {
+      setMenuToggle(false);
+    }
+  });
+
   return (
     <Atom.NavigationContainer>
-      <Atom.NavigationItems setBackground={scrollValue > 10}>
+      <Atom.NavigationItems
+        hasHamburguerOpen={menuToggle}
+        setBackground={scrollValue > 10}
+      >
         <Container>
           <Atom.NavigationExtends>
             <Atom.NavLogo onClick={() => navigate("/home")}>
-              <BsSoundwave color={theme?.colors?.contrast} size="30px" />
+              <Logo />
               Xpotify
             </Atom.NavLogo>
             <Atom.UserSection>
-              {user && <UserDropdown />}
+              {user && width > theme?.breakpoints?.md.replace("px", "") && (
+                <UserDropdown />
+              )}
               <ToggleTheme />
+              {user && width <= theme?.breakpoints?.md.replace("px", "") && (
+                <HambuguerMenu
+                  menuToggle={menuToggle}
+                  setMenuToggle={setMenuToggle}
+                />
+              )}
             </Atom.UserSection>
           </Atom.NavigationExtends>
         </Container>
