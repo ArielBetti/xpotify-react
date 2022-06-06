@@ -1,6 +1,5 @@
-import React from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react/cjs/react.development";
 import { useRecoilValue } from "recoil";
 import Logo from "../../assets/Logo";
 
