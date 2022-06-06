@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ParagraphBold } from "../../Typography";
+import { ParagraphBold, SmallText } from "../../Typography";
 
 export const CardTogglePlayButton = styled.div`
   position: absolute;
@@ -52,6 +52,12 @@ export const CardContainer = styled.div`
     max-width: 100%;
     margin: 0px;
   }
+
+  @media (max-width: ${(props) => props.theme?.breakpoints.xsm}) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const CardInfoContainer = styled.div`
@@ -62,6 +68,12 @@ export const CardInfoContainer = styled.div`
   @media (max-width: ${(props) => props.theme?.breakpoints.sm}) {
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
+  }
+
+  @media (max-width: ${(props) => props.theme?.breakpoints.xsm}) {
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
   }
 `;
@@ -75,6 +87,11 @@ export const CardImageContainer = styled.div`
   @media (max-width: ${(props) => props.theme?.breakpoints.sm}) {
     align-items: flex-start;
     width: auto;
+  }
+  @media (max-width: ${(props) => props.theme?.breakpoints.xsm}) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -91,6 +108,26 @@ export const CardTitle = styled(ParagraphBold)`
   text-overflow: ellipsis;
   white-space: nowrap;
   padding-bottom: 5px;
+  @media (max-width: ${(props) => props.theme?.breakpoints.xsm}) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 80px;
+  }
+`;
+
+export const CardDescription = styled(SmallText)`
+  width: 160px;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  @media (max-width: ${(props) => props.theme?.breakpoints.xsm}) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 80px;
+  }
 `;
 
 export const TextsContainer = styled.div`
