@@ -6,7 +6,15 @@ import Header from "./components/Header/header";
 import MySpotifyPlayer from "./components/Player";
 
 // pages
-import { Album, Artista, Home, Login, LoadUser, Playlist } from "./pages";
+import {
+  Album,
+  Artista,
+  Home,
+  Login,
+  LoadUser,
+  Playlist,
+  Logout,
+} from "./pages";
 
 const AppRouter = () => {
   return (
@@ -25,6 +33,7 @@ const AppRouter = () => {
           <Route path=":id" />
         </Route>
         <Route path="/home" element={<Home />} />
+        <Route path="/sair" element={<Logout />} />
       </Routes>
       <MySpotifyPlayer />
     </>

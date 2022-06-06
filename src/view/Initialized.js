@@ -23,7 +23,7 @@ const Initialized = () => {
 
   const getOAuthToken = useCallback(
     (callback) => callback(token.replace("Bearer", "").trim()),
-    []
+    [token]
   );
 
   // theme changer

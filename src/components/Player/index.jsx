@@ -1,4 +1,6 @@
 import { memo } from "react";
+import { useRecoilValue } from "recoil";
+import { atomUser } from "../../store/atoms";
 
 // children: components
 import PlayerControls from "./Controls";
@@ -10,6 +12,10 @@ import * as Atom from "./style";
 
 // ::
 const MySpotifyPlayer = () => {
+  const hasUser = useRecoilValue(atomUser);
+
+  if (!hasUser) return null;
+
   return (
     <Atom.PlayerContainer>
       <Atom.PlayerBarContainer>

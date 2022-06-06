@@ -11,7 +11,7 @@ export const XpotifyProvider = ({ children }) => {
   const [newToken, setNewToken] = useState("");
 
   // constants
-  const TOKEN_IN_55_MIN = 3300000;
+  const TOKEN_IN_8_MIN = 480000;
 
   const refreshTokenValue = () => {
     getNewToken().then((newToken) => setNewToken(`Bearer ${newToken}`));
@@ -24,7 +24,7 @@ export const XpotifyProvider = ({ children }) => {
   }, [newToken]);
 
   useEffect(() => {
-    setInterval(() => refreshTokenValue(), TOKEN_IN_55_MIN);
+    setInterval(() => refreshTokenValue(), TOKEN_IN_8_MIN);
   }, [token]);
 
   return (

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // refresher recoil token state method
-import { getNewToken } from '../context';
+import { getNewToken } from "../context";
 
 export const requester = (config, contentType) => {
   const service = axios.create({
@@ -25,9 +25,8 @@ export const requester = (config, contentType) => {
   service.interceptors.response.use(
     (res) => res,
     (error) => {
-      console.log('error', error);
       if (error?.response?.status === 401) {
-        window.location.href = '/'
+        window.location.href = "/sair";
       }
     }
   );
