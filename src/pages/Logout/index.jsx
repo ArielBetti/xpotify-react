@@ -24,10 +24,10 @@ const Logout = () => {
     if (player) {
       player.disconnect();
     }
-    resetUser();
     resetToken();
     resetRefreshToken();
 
+    resetUser();
     navigateTo("/");
   };
 
