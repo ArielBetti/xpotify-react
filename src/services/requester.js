@@ -27,7 +27,8 @@ export const requester = (config, contentType) => {
     (error) => {
       if (
         error?.response?.status === 401 &&
-        localStorage.getItem("current_user")
+        localStorage.getItem("current_user") &&
+        localStorage.getItem("access_token")
       ) {
         window.location.href = "/sair";
       }
