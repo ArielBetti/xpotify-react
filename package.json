@@ -20,14 +20,17 @@
     "react-spotify-web-playback-sdk": "^3.0.1",
     "recoil": "^0.7.3-alpha.1",
     "request": "~2.34.0",
+    "serve": "^13.0.2",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "browserslist": {
     "production": [
