@@ -22,7 +22,7 @@ const Initialized = () => {
   const token = useRecoilValue(atomToken);
 
   const getOAuthToken = useCallback(
-    (callback) => callback(token.replace("Bearer", "").trim()),
+    (callback) => callback(token?.replace("Bearer", "").trim()),
     [token]
   );
 
