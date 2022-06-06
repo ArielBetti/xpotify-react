@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useResetRecoilState } from "recoil";
+import { useSpotifyPlayer } from "react-spotify-web-playback-sdk";
 
 // recoil: atoms
 import { atomRefreshToken, atomToken, atomUser } from "../../store/atoms";
@@ -11,6 +12,7 @@ import Loader from "../../components/Loader";
 // ::
 const Logout = () => {
   const navigateTo = useNavigate();
+  const player = useSpotifyPlayer();
 
   // recoil: states
   const resetUser = useResetRecoilState(atomUser);
@@ -19,6 +21,7 @@ const Logout = () => {
 
   // logout function
   const logoutSection = () => {
+    player.disconnect();
     resetUser();
     resetToken();
     resetRefreshToken();
