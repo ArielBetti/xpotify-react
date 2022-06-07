@@ -39,7 +39,7 @@ const Initialized = () => {
         initialDeviceName="Xpotify Web"
         getOAuthToken={getOAuthToken}
         volume={0.5}
-        connectOnInitialized={true}
+        connectOnInitialized={token ? true : false}
       >
         <XpotifyProvider>
           <Atom.AppBaseUI>
