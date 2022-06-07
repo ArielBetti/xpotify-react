@@ -39,6 +39,7 @@ const Initialized = () => {
         initialDeviceName="Xpotify Web"
         getOAuthToken={getOAuthToken}
         volume={0.5}
+        // ? ternary is necessary why it is impossible compare undefined values
         connectOnInitialized={token ? true : false}
       >
         <XpotifyProvider>
