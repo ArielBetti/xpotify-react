@@ -2,6 +2,7 @@ import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
   body {
+    font-family: "montserrat";
     ::-webkit-scrollbar-track {
 	    background-color: ${(props) => `${props.theme?.colors?.neutral[2]}E6`};
 	    border-radius: 10px;

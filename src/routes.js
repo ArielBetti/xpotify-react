@@ -26,15 +26,15 @@ import {
 
 const AppRouter = () => {
   // local: states
-  const [userIsPremium, setUserIsPremium] = useState(false);
+  const [userIsFree, setUserIsFree] = useState(false);
 
   // recoil: states
   const [userDisabled, setUserDisabled] = useRecoilState(atomUserDisbladAlert);
   const user = useRecoilValue(atomUser);
 
   useEffect(() => {
-    if (user && user?.product !== "premium") return setUserIsPremium(false);
-    return setUserIsPremium(true);
+    if (user && user?.product !== "premium") return setUserIsFree(true);
+    return setUserIsFree(false), setUserDisabled(false);
   }, [user]);
 
   const onCloseAlertNoPremium = () => {
@@ -47,7 +47,7 @@ const AppRouter = () => {
         actionButton={onCloseAlertNoPremium}
         title={userNotEnabled?.title}
         content={userNotEnabled?.content}
-        open={user && userIsPremium && userDisabled}
+        open={user && userIsFree && userDisabled}
         textButton="Entendi"
       />
       <Header />

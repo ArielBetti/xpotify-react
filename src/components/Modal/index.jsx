@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, memo, useEffect } from "react";
 import { useClickOutSideComponent } from "../../hooks/useClickOutSideComponent";
 import { useTheme } from "styled-components";
 
@@ -23,6 +23,10 @@ const Modal = ({ open, title, content, textButton, actionButton }) => {
   };
 
   useClickOutSideComponent(modalRef, onCloseModal);
+
+  useEffect(() => {
+    setHasOpen(open);
+  }, [open]);
 
   if (!hasOpen) return null;
 
@@ -50,4 +54,4 @@ const Modal = ({ open, title, content, textButton, actionButton }) => {
   );
 };
 
-export default Modal;
+export default memo(Modal);

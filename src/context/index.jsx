@@ -8,10 +8,14 @@ export const XpotifyContext = createContext({});
 export const getNewToken = () => spotifyMethods.refreshToken();
 
 export const XpotifyProvider = ({ children }) => {
-  const [token, setToken] = useRecoilState(atomToken);
-  const [newToken, setNewToken] = useState("");
-  const userDevice = useRecoilValue(atomDevice);
   const player = useSpotifyPlayer();
+
+  // local: states
+  const [newToken, setNewToken] = useState("");
+
+  // recoil: states
+  const [token, setToken] = useRecoilState(atomToken);
+  const userDevice = useRecoilValue(atomDevice);
 
   // constants
   const TOKEN_IN_8_MIN = 480000;

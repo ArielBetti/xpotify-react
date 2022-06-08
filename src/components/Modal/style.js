@@ -85,7 +85,7 @@ export const ModalButton = styled.button`
   align-items: center;
   padding: 10px 20px;
   background-color: transparent;
-  border: 2px solid ${(props) => props.theme?.colors.text.contrast};
+  border: 2px solid ${(props) => props.theme?.colors?.contrast};
   border-radius: 4px;
   background-image: ${(props) =>
     `linear-gradient(${props.theme?.colors?.contrast}, ${props.theme?.colors?.contrast})`};
