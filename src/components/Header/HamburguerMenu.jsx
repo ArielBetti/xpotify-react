@@ -1,18 +1,21 @@
 import { memo } from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
 import { useTheme } from "styled-components";
 
 // icons
 import { MdMenu, MdMenuOpen, MdExitToApp } from "react-icons/md";
+
+// recoil: atoms
+import { atomUser } from "../../store/atoms";
 
 // atoms: components
 import * as Atom from "./style";
 
 // typography
 import * as Typography from "../../Typography";
-import { useRecoilValue } from "recoil";
-import { atomUser } from "../../store/atoms";
 
+// ::
 const HamburguerMenu = ({ menuToggle, setMenuToggle }) => {
   const theme = useTheme();
   const navigateTo = useNavigate();
