@@ -27,7 +27,7 @@ export const light = {
   },
   transitions: {
     1: "0.35s",
-    2: "0.25",
+    2: "0.25s",
   },
   breakpoints: {
     xsm: "360px",
@@ -67,7 +67,7 @@ export const dark = {
   },
   transitions: {
     1: "0.35s",
-    2: "0.25",
+    2: "0.25s",
   },
   breakpoints: {
     xsm: "360px",
