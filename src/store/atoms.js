@@ -71,3 +71,9 @@ export const atomDarkTheme = atom({
   default: true,
   effects: [localStorageEffect("dark_mode")],
 });
+
+export const atomUserDisbladAlert = atom({
+  key: "UserDisbladAlert",
+  default: true,
+  effects: [localStorageEffect("user_disabled")],
+});

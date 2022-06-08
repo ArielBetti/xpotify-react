@@ -4,7 +4,12 @@ import { useResetRecoilState } from "recoil";
 import { useSpotifyPlayer } from "react-spotify-web-playback-sdk";
 
 // recoil: atoms
-import { atomRefreshToken, atomToken, atomUser } from "../../store/atoms";
+import {
+  atomRefreshToken,
+  atomToken,
+  atomUser,
+  atomUserDisbladAlert,
+} from "../../store/atoms";
 
 // components
 import Loader from "../../components/Loader";
@@ -15,6 +20,7 @@ const Logout = () => {
   const player = useSpotifyPlayer();
 
   // recoil: states
+  const resetUserDisabledAlert = useResetRecoilState(atomUserDisbladAlert);
   const resetUser = useResetRecoilState(atomUser);
   const resetToken = useResetRecoilState(atomToken);
   const resetRefreshToken = useResetRecoilState(atomRefreshToken);
@@ -24,6 +30,7 @@ const Logout = () => {
     if (player) {
       player.disconnect();
     }
+    resetUserDisabledAlert();
     resetToken();
     resetRefreshToken();
 
