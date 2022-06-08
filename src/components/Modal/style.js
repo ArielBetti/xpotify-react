@@ -80,7 +80,7 @@ export const ModalButtonContainer = styled.div`
 
 export const ModalButton = styled.button`
   display: flex;
-  transition: ${(props) => props.theme.transitions[2]};
+  transition: ease ${(props) => props.theme.transitions[2]} background-size;
   justify-content: center;
   align-items: center;
   padding: 10px 20px;

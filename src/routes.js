@@ -34,7 +34,6 @@ const AppRouter = () => {
 
   useEffect(() => {
     if (user && user?.product !== "premium") return setUserIsFree(true);
-    return setUserIsFree(false), setUserDisabled(false);
   }, [user]);
 
   const onCloseAlertNoPremium = () => {

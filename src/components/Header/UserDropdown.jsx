@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { atomUser } from "../../store/atoms";
@@ -6,12 +6,15 @@ import { useTheme } from "styled-components";
 
 // icons
 import { MdArrowDropDown, MdLogout } from "react-icons/md";
+import Logo from "../../assets/Logo";
 
 // typography
 import * as Typography from "../../Typography/index";
 
-// atoms
+// atoms: components
 import * as Atom from "./style";
+
+// hooks
 import { useClickOutSideComponent } from "../../hooks/useClickOutSideComponent";
 
 const UserDropdown = () => {
@@ -42,7 +45,11 @@ const UserDropdown = () => {
         hasOpen={toggleOpenDropdown}
         onClick={() => handleToggleDropdown()}
       >
-        <Atom.UserProfilePic src={user?.images[0]?.url} alt="" />
+        {user?.images[0]?.url ? (
+          <Atom.UserProfilePic src={user?.images[0]?.url} alt="" />
+        ) : (
+          <Logo />
+        )}
         <Atom.UserDropDownUserName>
           {user?.display_name}
         </Atom.UserDropDownUserName>

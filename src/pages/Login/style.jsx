@@ -21,12 +21,11 @@ export const LoginButtonContainer = styled.div`
   a {
     color: ${(props) => props?.theme?.colors?.text?.contrast};
   }
-
 `;
 
 export const LoginButton = styled.a`
   display: flex;
-  transition: ${(props) => props.theme.transitions[2]};
+  transition: ease ${(props) => props.theme.transitions[2]} background-size;
   justify-content: center;
   align-items: center;
   border-radius: 5px;
