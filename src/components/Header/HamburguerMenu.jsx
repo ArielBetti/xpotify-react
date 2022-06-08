@@ -5,6 +5,7 @@ import { useTheme } from "styled-components";
 
 // icons
 import { MdMenu, MdMenuOpen, MdExitToApp } from "react-icons/md";
+import Logo from "../../assets/Logo";
 
 // recoil: atoms
 import { atomUser } from "../../store/atoms";
@@ -34,7 +35,14 @@ const HamburguerMenu = ({ menuToggle, setMenuToggle }) => {
       </Atom.HamburguerMenuToggle>
       <Atom.HamburguerMenuCollapse hasOpen={menuToggle}>
         <Atom.HamburguerUserSection>
-          <Atom.UserProfilePic src={user?.images[0]?.url} alt="" />
+          {user?.images[0]?.url ? (
+            <Atom.UserProfilePic
+              src={user?.images[0]?.url}
+              alt="Foto de perfil"
+            />
+          ) : (
+            <Logo />
+          )}
           <Atom.UserDropDownUserName>
             {user?.display_name}
           </Atom.UserDropDownUserName>
