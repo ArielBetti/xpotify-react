@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 // alerts
@@ -24,6 +24,7 @@ import {
   Logout,
 } from "./pages";
 
+// ::
 const AppRouter = () => {
   // local: states
   const [userIsFree, setUserIsFree] = useState(false);

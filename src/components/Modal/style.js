@@ -35,7 +35,6 @@ export const ModalContainer = styled.div`
     max-width: 100%;
     max-height: 80%;
   }
-
 `;
 
 export const ModalTitle = styled(Paragraph)`

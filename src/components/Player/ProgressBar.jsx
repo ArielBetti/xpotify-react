@@ -33,7 +33,7 @@ const PlayerProgressBar = () => {
         </Atom.PlayerProgressBarTimer>
         <Atom.PlayerProgressBarSlider
           type="range"
-          value={currentPosition}
+          value={isNaN(currentPosition) ? 0 : currentPosition}
           onClick={() => player.resume()}
           onChange={(e) => player?.seek(e.target.value)}
           min="0"

@@ -17,7 +17,6 @@ export const HeroContainer = styled.div`
     padding: 2px;
     width: 100%;
   }
-
 `;
 
 export const TitleWrapper = styled(Title)`

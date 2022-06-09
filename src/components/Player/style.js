@@ -94,8 +94,9 @@ export const PlayerInfosContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
   max-width: 250px;
-  @media (max-width: ${(props) => props.theme?.breakpoints.sm}) {
+  @media (max-width: ${(props) => props.theme?.breakpoints.md}) {
     max-width: 90%;
   }
 `;
@@ -169,7 +170,7 @@ export const PlayerSeekBarContainer = styled.div`
 export const PlayerBarContainer = styled(Container)`
   flex-direction: row;
   gap: 10px;
-  @media (max-width: ${(props) => props.theme?.breakpoints.sm}) {
+  @media (max-width: ${(props) => props.theme?.breakpoints.md}) {
     flex-direction: column;
   }
 `;

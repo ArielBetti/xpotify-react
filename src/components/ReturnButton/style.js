@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Paragraph } from "../../Typography";
 
 export const ReturnButtonContainer = styled.div`
   display: inline-flex;
@@ -15,6 +14,6 @@ export const ReturnButtonContainer = styled.div`
     box-shadow: ${(props) => `${props.theme?.colors?.contrast}4A`} 0px 3px,
       ${(props) => `${props.theme?.colors?.contrast}33`} 0px 5px,
       ${(props) => `${props.theme?.colors?.contrast}26`} 0px 10px;
-  transform: translateY(-5px);
+    transform: translateY(-5px);
   }
 `;

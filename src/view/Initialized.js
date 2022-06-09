@@ -1,7 +1,7 @@
 import { useMemo, memo, useCallback } from "react";
 import { WebPlaybackSDK } from "react-spotify-web-playback-sdk";
 import { useRecoilValue } from "recoil";
-import { atomDarkTheme, atomToken, atomUser } from "../store/atoms";
+import { atomDarkTheme, atomToken } from "../store/atoms";
 import { ThemeProvider } from "styled-components";
 import { dark, light } from "../theme";
 import AppRouter from "../routes";

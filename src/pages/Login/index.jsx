@@ -55,8 +55,8 @@ const Login = () => {
           .
         </Typography.Paragraph>
         <Typography.Paragraph>
-          Olá meu nome é Ariel Betti desenvolvedor desse projeto, se você gostou dessa aplicação considere
-          dar apoio seguindo nas minhas redes:{" "}
+          Olá meu nome é Ariel Betti desenvolvedor desse projeto, se você gostou
+          dessa aplicação considere dar apoio seguindo nas minhas redes:{" "}
           <Atom.LoginExternalLink
             target="_blank"
             href="https://github.com/ArielBetti"

@@ -1,4 +1,4 @@
-import { useEffect, memo } from "react";
+import { memo } from "react";
 import { MdPlayArrow, MdPause } from "react-icons/md";
 import {
   usePlaybackState,

@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from "react";
+import { useEffect, memo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 

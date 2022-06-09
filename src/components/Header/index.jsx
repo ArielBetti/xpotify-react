@@ -43,7 +43,7 @@ const Header = () => {
     if (user && width > theme?.breakpoints?.md.replace("px", "")) {
       setMenuToggle(false);
     }
-  });
+  }, [width]);
 
   return (
     <Atom.NavigationContainer>
