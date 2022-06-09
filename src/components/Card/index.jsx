@@ -23,8 +23,6 @@ import { MdPlayArrow, MdPause } from "react-icons/md";
 import { atomCurrentTrack, atomTrackList } from "../../store/atoms";
 import { atomHashTrackList } from "../../store/atomsHash";
 
-// typography
-import * as Typography from "../../Typography";
 import { selectorSetTrackCollection } from "../../store/selectors";
 import Logo from "../../assets/Logo";
 

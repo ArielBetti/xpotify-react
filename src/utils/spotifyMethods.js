@@ -1,6 +1,4 @@
 import axios from "axios";
-import { atomToken } from "../store/atoms";
-import { localStorageEffect } from "./localStorageEffect";
 
 export default {
   user: async () => {

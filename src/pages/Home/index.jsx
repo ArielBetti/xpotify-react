@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import {
   useRecoilValueLoadable,
   useRecoilState,
-  useSetRecoilState,
 } from "recoil";
 
 // recoil: selectors
@@ -12,7 +11,6 @@ import { selectorGetSearchList } from "../../store/selectors";
 import {
   atomAlbums,
   atomArtist,
-  atomDevice,
   atomPlaylists,
   atomTracks,
 } from "../../store/atoms";
@@ -29,14 +27,10 @@ import Search from "../../components/Search/search";
 import * as Atom from "./style";
 import Empty from "../../components/Empty";
 import spotifyMethods from "../../utils/spotifyMethods";
-import { usePlayerDevice } from "react-spotify-web-playback-sdk";
 import PlaylistContainer from "../../containers/Playlists";
 
 // ::
 const Home = () => {
-  // device
-  const device = usePlayerDevice();
-
   // recoil: loadable
   const searchResultLoadable = useRecoilValueLoadable(selectorGetSearchList);
 
@@ -45,7 +39,6 @@ const Home = () => {
   const [albums, setAlbums] = useRecoilState(atomAlbums);
   const [tracks, setTracks] = useRecoilState(atomTracks);
   const [playlists, setPlaylists] = useRecoilState(atomPlaylists);
-  const setUserDevice = useSetRecoilState(atomDevice);
 
   useEffect(() => {
     if (searchResultLoadable.state === "hasValue") {
@@ -61,9 +54,6 @@ const Home = () => {
     }
   }, [searchResultLoadable.state]);
 
-  useEffect(() => {
-    setUserDevice(device);
-  }, [device]);
 
   const RenderSearchList = () => {
     if (searchResultLoadable.contents) {

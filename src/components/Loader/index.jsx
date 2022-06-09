@@ -10,7 +10,6 @@ const Loader = ({ disclaimer }) => {
         <Bars
           color={theme.colors?.contrast}
           width="150px"
-          // wrapperStyle={{ justifyContent: "center", alignItems: "center"}}
           ariaLabel="loading-indicator"
         />
         <Atom.Disclaimer>{disclaimer || "Carregando"}</Atom.Disclaimer>

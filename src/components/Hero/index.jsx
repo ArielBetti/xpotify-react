@@ -1,6 +1,5 @@
 // typography
 import Logo from "../../assets/Logo";
-import * as Typography from "../../Typography";
 
 // atoms: components
 import * as Atom from "./style";

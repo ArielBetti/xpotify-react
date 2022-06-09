@@ -26,7 +26,6 @@ const Artist = () => {
   // local: states
   const [album, setAlbum] = useState({});
   const [albumArt, setAlbumArt] = useState("");
-  const [albums, setAlbums] = useState([]);
   const [tracks, setTracks] = useState([]);
 
   useEffect(() => {

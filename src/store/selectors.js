@@ -1,4 +1,3 @@
-import { usePlayerDevice } from "react-spotify-web-playback-sdk";
 import { selector, selectorFamily } from "recoil";
 
 // requester

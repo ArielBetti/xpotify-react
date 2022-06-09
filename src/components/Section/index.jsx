@@ -1,5 +1,3 @@
-import { useMemo } from "react";
-
 // typography
 import * as Typography from "../../Typography";
 

@@ -1,7 +1,7 @@
 import { useTheme } from "styled-components";
 
 // atoms: components
-import * as Atom from './style';
+import * as Atom from "./style";
 
 export const EmptyIllustrationRender = () => {
   const theme = useTheme();
@@ -807,7 +807,10 @@ export const EmptyIllustrationRender = () => {
           ></polygon>
           <polygon
             points="298.78 280.71 298.78 282.56 372.87 325.33 372.87 323.49 298.78 280.71"
-            style={{ fill: theme?.colors?.neutral.zero, opacity: "0.6000000000000001" }}
+            style={{
+              fill: theme?.colors?.neutral.zero,
+              opacity: "0.6000000000000001",
+            }}
           ></polygon>
           <polygon
             points="383.97 312.21 383.97 314.06 372.87 325.33 372.87 323.49 383.97 312.21"
@@ -823,7 +826,10 @@ export const EmptyIllustrationRender = () => {
           ></path>
           <path
             d="M453.85,281a2,2,0,0,0-1.19-1.59l-101-58.31a5.46,5.46,0,0,0-4.89-.19L285,256.6a1,1,0,0,0-.2.13l-.17.14a.67.67,0,0,0-.14.15,1.09,1.09,0,0,0-.28.47,1.07,1.07,0,0,0-.06.32v0c0,.7,0,13.05,0,13.51a2,2,0,0,0,1.2,1.61l101,58.3a5.46,5.46,0,0,0,4.89.2L453,295.76a1.46,1.46,0,0,0,.84-1.21C453.87,294,453.85,281.47,453.85,281Zm-65.76-3.83a14.64,14.64,0,0,1,13.3,0c3.67,2.11,3.67,5.55,0,7.68a14.76,14.76,0,0,1-13.3,0C384.41,282.73,384.41,279.29,388.09,277.18Zm-45.83-26.47a14.76,14.76,0,0,1,13.3,0c3.68,2.13,3.68,5.57,0,7.69a14.7,14.7,0,0,1-13.3,0C338.59,256.28,338.59,252.84,342.26,250.71Z"
-            style={{ fill: theme?.colors?.neutral.zero, opacity: "0.6000000000000001" }}
+            style={{
+              fill: theme?.colors?.neutral.zero,
+              opacity: "0.6000000000000001",
+            }}
           ></path>
           <path
             d="M453.85,294.55a1.46,1.46,0,0,1-.84,1.21L391.2,331.45a4.55,4.55,0,0,1-2.27.48V318.4a4.43,4.43,0,0,0,2.27-.48L453,282.24a1.47,1.47,0,0,0,.84-1.23C453.85,281.47,453.87,294,453.85,294.55Z"
@@ -1031,7 +1037,10 @@ export const EmptyIllustrationRender = () => {
           ></polygon>
           <polygon
             points="298.78 265.34 298.78 267.19 372.87 309.96 372.87 308.11 298.78 265.34"
-            style={{ fill: theme?.colors?.neutral.zero, opacity: "0.6000000000000001" }}
+            style={{
+              fill: theme?.colors?.neutral.zero,
+              opacity: "0.6000000000000001",
+            }}
           ></polygon>
           <polygon
             points="383.97 296.84 383.97 298.69 372.87 309.96 372.87 308.11 383.97 296.84"

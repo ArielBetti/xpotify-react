@@ -1,8 +1,5 @@
 import axios from "axios";
 
-// refresher recoil token state method
-import { getNewToken } from "../context";
-
 export const requester = (config, contentType) => {
   const service = axios.create({
     baseURL: config.baseURL || "https://api.spotify.com/v1",
