@@ -5,14 +5,14 @@
   "theme_color": "#1b1b1b",
   "icons": [
     {
-      "src": "icons/xpotify.svg",
+      "src": "icons/xpotify-192px.png",
       "sizes": "192x192",
-      "type": "icons/svg"
+      "type": "icons/png"
     },
     {
-      "src": "icons/xpotify.svg",
+      "src": "icons/xpotify-512px",
       "sizes": "512x512",
-      "type": "icons/svg"
+      "type": "icons/png"
     }
   ],
   "start_url": "/?source=pwa",
