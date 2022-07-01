@@ -43,7 +43,7 @@ const Login = () => {
       <Atom.LoginDisclaimerContainer>
         <Atom.LoginTitle>Bem vindo ao Xpotify!</Atom.LoginTitle>
         <Typography.Paragraph>
-          Esse é um projeto desenvolvido para para explorar arquiteturas
+          Esse é um projeto desenvolvido para explorar arquiteturas
           front-end integrando as APIs do spotify você pode ver o código dessa
           aplicação{" "}
           <Atom.LoginExternalLink
