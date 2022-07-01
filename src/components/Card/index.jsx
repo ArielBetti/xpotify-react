@@ -71,7 +71,7 @@ const Card = ({
     if (playCollectionTrackLoadable.state === "hasValue") {
       setCurrentTrack(trackList);
     }
-  }, [playCollectionTrackLoadable.state, player]);
+  }, [playCollectionTrackLoadable.state, player, setCurrentTrack, trackList]);
 
   return (
     <Atom.CardContainer marginGap={marginGap}>

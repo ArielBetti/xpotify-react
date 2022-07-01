@@ -61,7 +61,7 @@ const Search = () => {
 
   useEffect(() => {
     setFakeSearch(search || "");
-  }, []);
+  }, [search]);
 
   useEffect(() => {
     if (!fakeSearch) {
@@ -69,7 +69,7 @@ const Search = () => {
       setAlbums("");
       setTracks("");
     }
-  }, [search]);
+  }, [fakeSearch, search, setAlbums, setArtist, setTracks]);
 
   return (
     <Atom.SearchContainer onSubmit={preventsubmit}>

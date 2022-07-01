@@ -38,7 +38,7 @@ const TrackContainer = ({ tracks, trackArt }) => {
     if (playTrackLoadable.state === "hasValue") {
       setCurrentTrack(trackList);
     }
-  }, [playTrackLoadable.state]);
+  }, [playTrackLoadable.state, setCurrentTrack, trackList]);
 
   if (!tracks || tracks.length === 0) return null;
 

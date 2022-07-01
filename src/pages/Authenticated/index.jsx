@@ -37,7 +37,7 @@ const Authenticated = () => {
       setUser(authLoadable.contents);
       navigate("/home");
     }
-  }, [authLoadable.state]);
+  }, [authLoadable.contents, authLoadable.state, navigate, setUser]);
 
   return <Loader />;
 };

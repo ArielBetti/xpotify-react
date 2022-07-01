@@ -46,7 +46,7 @@ export const XpotifyProvider = ({ children }) => {
       setUserDevice(device);
       player.connect();
     }
-  }, [device, user]);
+  }, [device, player, setUserDevice, user]);
 
   return (
     <XpotifyContext.Provider value={{ refreshTokenValue }}>

@@ -25,7 +25,7 @@ const Login = () => {
 
   useEffect(() => {
     if (hasUser) navigateTo("/home");
-  }, [hasUser]);
+  }, [hasUser, navigateTo]);
 
   return (
     <Atom.LoginContainer>

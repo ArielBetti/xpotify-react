@@ -52,7 +52,7 @@ const Home = () => {
     if (searchResultLoadable.state === "hasError") {
       spotifyMethods.refreshToken();
     }
-  }, [searchResultLoadable.state]);
+  }, [searchResultLoadable.contents, searchResultLoadable.state, setAlbums, setArtist, setPlaylists, setTracks]);
 
 
   const RenderSearchList = () => {

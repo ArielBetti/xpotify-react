@@ -44,21 +44,21 @@ const Artist = () => {
       setArtist(result);
       setArtistArt(result.images[0 || 1 || 2]?.url);
     }
-  }, [artistLoadable.state]);
+  }, [artistLoadable.contents, artistLoadable.state]);
 
   useEffect(() => {
     if (tracksLoadable.state === "hasValue") {
       const tracks = tracksLoadable.contents.tracks;
       setTracks(tracks || []);
     }
-  }, [tracksLoadable.state]);
+  }, [tracksLoadable.contents.tracks, tracksLoadable.state]);
 
   useEffect(() => {
     if (artistAlbumsLoadable.state === "hasValue") {
       const albums = artistAlbumsLoadable.contents.items;
       setAlbums(albums || []);
     }
-  }, [artistAlbumsLoadable.state]);
+  }, [artistAlbumsLoadable.contents.items, artistAlbumsLoadable.state]);
 
   if (
     artistLoadable.state === "loading" ||

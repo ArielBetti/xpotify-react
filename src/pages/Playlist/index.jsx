@@ -38,7 +38,7 @@ const Playlist = () => {
       setPlaylist(result);
       setPlaylistArt(result.images[0]?.url);
     }
-  }, [playlistLoadable.state]);
+  }, [playlistLoadable.contents, playlistLoadable.state]);
 
   if (playlistLoadable.state === "loading") {
     return <Loader />;

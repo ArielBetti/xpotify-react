@@ -37,7 +37,7 @@ const Artist = () => {
       setAlbum(result);
       setAlbumArt(result.images[0 || 1 || 2]?.url);
     }
-  }, [albumLoadable.state]);
+  }, [albumLoadable.contents, albumLoadable.state]);
 
   if (albumLoadable.state === "loading") {
     return <Loader />;

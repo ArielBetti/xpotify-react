@@ -11,5 +11,5 @@ export const useClickOutSideComponent = (ref, action) => {
     return () => {
       document.removeEventListener("click", handleClickOutside, true);
     };
-  }, [action]);
+  }, [action, ref]);
 };
