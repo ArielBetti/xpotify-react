@@ -1,25 +1,20 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "Xpotify",
+  "short_name": "Xpotify",
+  "background_color": "#f5f5f5",
+  "theme_color": "#1b1b1b",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "icons/xpotify.svg",
+      "sizes": "192x192",
+      "type": "icons/svg"
     },
     {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "icons/xpotify.svg",
+      "sizes": "512x512",
+      "type": "icons/svg"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#1b1b1b",
-  "background_color": "#ffffff"
+  "start_url": "/?source=pwa",
+  "display": "standalone"
 }
