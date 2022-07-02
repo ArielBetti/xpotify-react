@@ -47,6 +47,7 @@ const Track = ({ track, handleChangeTrack, trackArt }) => {
           )}
         </Atom.TrackCardTogglePlayContainer>
         <Atom.TrackCardImage
+          effect="blur"
           src={track?.album?.images[0 || 1 || 2].url || trackArt}
           alt="Album art"
         />

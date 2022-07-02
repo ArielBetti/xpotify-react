@@ -1,3 +1,4 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import styled from "styled-components";
 import { Paragraph, SmallText } from "../../Typography";
 import { Container } from "../Container";
@@ -101,7 +102,7 @@ export const PlayerInfosContainer = styled.div`
   }
 `;
 
-export const PlayerInfoAlbumArt = styled.img`
+export const PlayerInfoAlbumArt = styled(LazyLoadImage)`
   width: 60px;
   height: 60px;
   margin-right: 10px;
@@ -122,12 +123,14 @@ export const PlayerInfoTextContainer = styled.div`
 export const PlayerInfoTrackName = styled(Paragraph)`
   transition: linear 2.5s transform;
   width: auto;
-  cursor: default;
+  cursor: pointer;
   :hover {
+    text-decoration: underline;
+
     ${(props) =>
       props.trackNameTextLength > 20 &&
       `
-      transform: translateX(-${props.trackNameWidth - 180}px);
+      transform: translateX(-${props.trackNameWidth - 140}px);
     `}
   }
 `;
@@ -136,11 +139,19 @@ export const PlayerInfoTrackArtists = styled(SmallText)`
   transition: linear 2.5s transform;
   width: auto;
   cursor: default;
+
+  span {
+    cursor: pointer;
+    :hover {
+      text-decoration: underline;
+    }
+  }
+
   :hover {
     ${(props) =>
       props.trackArtistTextLength > 20 &&
       `
-      transform: translateX(-${props.trackArtistWidth - 180}px);
+      transform: translateX(-${props.trackArtistWidth - 160}px);
     `}
   }
 `;

@@ -46,7 +46,11 @@ const UserDropdown = () => {
         onClick={() => handleToggleDropdown()}
       >
         {user?.images[0]?.url ? (
-          <Atom.UserProfilePic src={user?.images[0]?.url} alt="" />
+          <Atom.UserProfilePic
+            effect="blur"
+            src={user?.images[0]?.url}
+            alt=""
+          />
         ) : (
           <Logo />
         )}
