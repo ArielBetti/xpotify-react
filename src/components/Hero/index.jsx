@@ -73,7 +73,7 @@ const Hero = ({ collectionUri, title, image }) => {
           )}
         </Atom.HeroTogglePlayButton>
         {image ? (
-          <Atom.HeroImg effect="black-and-white" src={image} alt="Arte do artista/album" />
+          <Atom.HeroImg effect="blur" src={image} alt="Arte do artista/album" />
         ) : (
           <Logo size="200px" />
         )}

@@ -54,8 +54,6 @@ const PlayerInfos = () => {
 
   if (!playbackState) return null;
 
-  console.log(playbackState);
-
   return (
     <Atom.PlayerInfosContainer>
       <Atom.PlayerInfoAlbumArt

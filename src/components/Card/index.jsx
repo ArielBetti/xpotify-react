@@ -95,6 +95,7 @@ const Card = ({
               type={type || "artist"}
               src={image}
               alt={ariaLabel}
+              effect="blur"
             />
           ) : (
             <Logo size="8em" />

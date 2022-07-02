@@ -1,3 +1,4 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import styled from "styled-components";
 import { ParagraphBold, SmallText } from "../../Typography";
 
@@ -95,7 +96,7 @@ export const CardImageContainer = styled.div`
   }
 `;
 
-export const CardImage = styled.img`
+export const CardImage = styled(LazyLoadImage)`
   border-radius: ${(props) => (props.type === "artist" ? "100%" : "4px")};
   width: 8em;
   height: 8em;

@@ -1,3 +1,4 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import styled from "styled-components";
 import { Paragraph, SubTitle } from "../../Typography";
 
@@ -135,7 +136,7 @@ export const UserDropDownItem = styled.div`
   }
 `;
 
-export const UserProfilePic = styled.img`
+export const UserProfilePic = styled(LazyLoadImage)`
   width: 45px;
   height: 45px;
   border-radius: 100%;

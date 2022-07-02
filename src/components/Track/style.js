@@ -1,3 +1,4 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import styled from "styled-components";
 import { Paragraph, SmallText } from "../../Typography";
 
@@ -36,7 +37,7 @@ export const TrackCardTogglePlayContainer = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
 `;
 
-export const TrackCardImage = styled.img`
+export const TrackCardImage = styled(LazyLoadImage)`
   width: 60px;
   height: 60px;
 `;

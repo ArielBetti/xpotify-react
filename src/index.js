@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./view/App";
 import reportWebVitals from "./reportWebVitals";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import "./reset.css";
 
 ReactDOM.render(
