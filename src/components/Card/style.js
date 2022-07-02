@@ -15,6 +15,7 @@ export const CardTogglePlayButton = styled.div`
   visibility: ${(props) => (props?.hasCurrent ? "visible" : "hidden")};
   left: 10px;
   top: 10px;
+  z-index: 1;
 
   @media (max-width: ${(props) => props.theme?.breakpoints.md}) {
     visibility: visible;
