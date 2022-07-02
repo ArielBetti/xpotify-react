@@ -157,6 +157,7 @@ export const PlayerInfoTrackArtists = styled(SmallText)`
 `;
 
 export const PlayerContainer = styled.div`
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
