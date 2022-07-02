@@ -47,7 +47,11 @@ const Playlist = () => {
   return (
     <Atom.ContainerArtistPage>
       <ReturnButton />
-      <Hero title={playlist?.name} image={playListArt || ""} />
+      <Hero
+        collectionUri={playlist?.uri}
+        title={playlist?.name}
+        image={playListArt || ""}
+      />
       <TrackContainer tracks={tracks} />
     </Atom.ContainerArtistPage>
   );

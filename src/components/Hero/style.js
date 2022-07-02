@@ -1,3 +1,4 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import styled from "styled-components";
 import { Title } from "../../Typography";
 
@@ -24,10 +25,30 @@ export const TitleWrapper = styled(Title)`
   padding: 10px;
 `;
 
-export const HeroImg = styled.img`
+export const HeroImgWrapper = styled.div`
+  position: relative;
+`;
+
+export const HeroImg = styled(LazyLoadImage)`
   width: 100%;
   height: 100%;
   max-height: 200px;
   max-width: 200px;
   border-radius: 50%;
+`;
+
+export const HeroTogglePlayButton = styled.div`
+  position: absolute;
+  background: ${(props) => props?.theme?.colors?.contrast};
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  visibility: "visible";
+  left: 10px;
+  top: 10px;
+  z-index: 1;
 `;

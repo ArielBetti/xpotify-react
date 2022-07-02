@@ -46,7 +46,11 @@ const Artist = () => {
   return (
     <Atom.ContainerArtistPage>
       <ReturnButton />
-      <Hero title={album?.name} image={albumArt || ""} />
+      <Hero
+        collectionUri={album?.uri}
+        title={album?.name}
+        image={albumArt || ""}
+      />
       <TrackContainer trackArt={albumArt} tracks={tracks} />
     </Atom.ContainerArtistPage>
   );
