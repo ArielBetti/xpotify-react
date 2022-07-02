@@ -1,20 +1,20 @@
 {
   "name": "Xpotify",
   "short_name": "Xpotify",
-  "background_color": "#1b1b1b",
-  "theme_color": "#1b1b1b",
+  "background_color": "#212121",
+  "theme_color": "#212121",
   "icons": [
     {
       "src": "icons/xpotify-192px.png",
       "sizes": "192x192",
       "type": "icons/png",
-      "purpose": "maskable any"
+      "purpose": "maskable"
     },
     {
       "src": "icons/xpotify-512px.png",
       "sizes": "512x512",
       "type": "icons/png",
-      "purpose": "maskable any"
+      "purpose": "maskable"
     }
   ],
   "start_url": "/?source=pwa",
