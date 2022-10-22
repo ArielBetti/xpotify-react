@@ -11,7 +11,6 @@ import { atomUser, atomUserDisbladAlert } from "./store/atoms";
 // components
 import Header from "./components/Header";
 import Modal from "./components/Modal";
-import MySpotifyPlayer from "./components/Player";
 
 // pages
 import {
@@ -66,7 +65,6 @@ const AppRouter = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/sair" element={<Logout />} />
       </Routes>
-      <MySpotifyPlayer />
     </>
   );
 };

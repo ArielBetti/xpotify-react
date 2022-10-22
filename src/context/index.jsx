@@ -6,6 +6,7 @@ import {
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { atomDevice, atomToken, atomUser } from "../store/atoms";
 import spotifyMethods from "../utils/spotifyMethods";
+import MySpotifyPlayer from "../components/Player";
 
 export const XpotifyContext = createContext({});
 export const getNewToken = () => spotifyMethods.refreshToken();
@@ -51,6 +52,7 @@ export const XpotifyProvider = ({ children }) => {
   return (
     <XpotifyContext.Provider value={{ refreshTokenValue }}>
       {children}
+      <MySpotifyPlayer />
     </XpotifyContext.Provider>
   );
 };

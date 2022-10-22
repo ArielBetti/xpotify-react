@@ -32,9 +32,9 @@ export const HeroImgWrapper = styled.div`
 export const HeroImg = styled(LazyLoadImage)`
   width: 100%;
   height: 100%;
-  max-height: 200px;
-  max-width: 200px;
-  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
 `;
 
 export const HeroTogglePlayButton = styled.div`
